@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Hoops
+                    Zu spat
                 </div>
 
                 <div class="links">

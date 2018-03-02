@@ -83,9 +83,9 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Sercan</a>
-                    <a href="https://laracasts.com">Emrah</a>
-                    <a href="https://laravel-news.com">Osman</a>
+                    <a href="https://laravel.com/docs">Sercan OKTAY</a>
+                    <a href="https://laracasts.com">Emrah EMREM</a>
+                    <a href="https://laravel-news.com">Osman KUTLU</a>
                 </div>
             </div>
         </div>

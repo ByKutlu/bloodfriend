@@ -12,5 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+});
+
+Route::get('/calisan', function () {
+    return view('calisan');
+});
+Route::get('/kurum', function () {
+    return view('kurum');
 });

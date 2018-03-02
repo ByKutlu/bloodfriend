@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Hoops
+                    Blood Friend
                 </div>
 
                 <div class="links">

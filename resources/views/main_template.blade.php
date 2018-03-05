@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
     <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Material Dashboard by Creative Tim</title>
+    <title>Blood Friend</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <!-- Bootstrap core CSS     -->
@@ -30,24 +30,12 @@
 -->
         <div class="logo">
             <a href="" class="simple-text">
-                Blood Friend
+                Blood
+        <img src="material/img/logo.png" width=30/> Friend
             </a>
         </div>
-        <div class="sidebar-wrapper">
-            <ul class="nav">
-                <li class="active">
-                    <a href="dashboard.html">
-                        <i class="material-icons">dashboard</i>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
-                <li class="active-pro">
-                    <a href="upgrade.html">
-                        <i class="material-icons">unarchive</i>
-                        <p>Upgrade to PRO</p>
-                    </a>
-                </li>
-            </ul>
+        <div class="sidebar-wrapper" data-color="red">
+            @yield('nav')
         </div>
     </div>
     <div class="main-panel">
@@ -71,7 +59,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="#">Menü</a>
+                                    <a href="http://localhost/bloodfriend/public/ayarlar">Ayarlar</a>
                                 </li>
                                 <li>
                                     <a href="#">Çıkış</a>
@@ -96,11 +84,12 @@
         </div>
         <footer class="footer">
             <div class="container-fluid">
-
+              
                 <p class="copyright pull-right">
                     &copy;
                     2018 Blood Friend
                 </p>
+               
             </div>
         </footer>
     </div>

@@ -1,7 +1,7 @@
 @extends('main_template')
 @section('nav')
 <ul class="nav">
-                <li class="active" data-color="red">
+                <li>
                     <a href="http://localhost/bloodfriend/public/">
                         <i class="material-icons">home</i>
                         <p>Ana Sayfa</p>
@@ -13,7 +13,7 @@
                         <p>Kan Talebi</p>
                     </a>
                 </li>
-                <li>
+                <li class="active" data-color="red">
                     <a href="http://localhost/bloodfriend/public/kantalebilistesi">
                     <i class="material-icons">assignment</i>
                         <p>Kan Talep Listesi</p>
@@ -47,7 +47,7 @@
             </ul>
 @endsection
 @section('title')
-    Blood Friend
+    Ayarlar
 @endsection
 @section('content')
     kjsdnckjsndkjscnksjd

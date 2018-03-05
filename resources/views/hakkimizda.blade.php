@@ -1,7 +1,7 @@
 @extends('main_template')
 @section('nav')
 <ul class="nav">
-                <li class="active" data-color="red">
+                <li>
                     <a href="http://localhost/bloodfriend/public/">
                         <i class="material-icons">home</i>
                         <p>Ana Sayfa</p>
@@ -31,7 +31,7 @@
                         <p>Kurumlar</p>
                     </a>
                 </li>
-                <li>
+                <li class="active" data-color="red">
                     <a href="http://localhost/bloodfriend/public/hakkimizda">
                     <i class="material-icons">new_releases</i>
                         <p>Hakkımızda</p>
@@ -47,8 +47,8 @@
             </ul>
 @endsection
 @section('title')
-    Blood Friend
+    Hakkımızda
 @endsection
 @section('content')
-    kjsdnckjsndkjscnksjd
+    Dokuz Eylül Üniversitesi Bilgisayar Mühendisliği bölümü öğrecileri olan Emrah EMREM , Osman KUTLU ve Sercan OKTAY'ın geliştirmiş olduğu kan bulmayı hızlandıran bir sistemdir. Danışmanlığını Prof.Dr. Yalçın ÇEBİ yapmaktadır.
 @endsection

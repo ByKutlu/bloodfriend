@@ -21,3 +21,15 @@ Route::get('/calisan', function () {
 Route::get('/kurum', function () {
     return view('kurum');
 });
+Route::get('/hakkimizda', function () {
+    return view('hakkimizda');
+});
+Route::get('/ayarlar', function () {
+    return view('ayarlar');
+});
+Route::get('/kantalebi', function () {
+    return view('kantalebi');
+});
+Route::get('/kantalebilistesi', function () {
+    return view('kantalebilistesi');
+});

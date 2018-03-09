@@ -33,3 +33,6 @@ Route::get('/kantalebi', function () {
 Route::get('/kantalebilistesi', function () {
     return view('kantalebilistesi');
 });
+
+Route::get('/getCities','AddressController@getCities');
+Route::get('/getTowns/{city_id}','AddressController@getTowns');

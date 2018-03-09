@@ -10,5 +10,8 @@ class City extends Model
     public $timestamps = false;
     protected $primaryKey ='city_id';
 
+    public function towns(){
+        return $this->hasMany('App\Town', 'city_id', 'city_id');
+    }
 
 }

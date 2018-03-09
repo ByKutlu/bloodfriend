@@ -10,4 +10,10 @@ class FormReply extends Model
     public $timestamps = false;
     protected $primaryKey ='form_reply_id';
 
+    public function person(){
+        return $this->belongsTo('App\Person', 'person_id', 'person_id');
+    }
+    public function formQuestion(){
+        return $this->belongsTo('App\FormQuestion', 'form_question_id', 'form_question_id');
+    }
 }

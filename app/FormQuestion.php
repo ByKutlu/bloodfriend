@@ -16,4 +16,8 @@ class FormQuestion extends Model
     protected $table = 'form_question';
     public $timestamps = false;
     protected $primaryKey = 'form_question_id';
+
+    public function formReplies(){
+        return $this->hasMany('App\FormReply', 'form_question_id', 'form_question_id');
+    }
 }

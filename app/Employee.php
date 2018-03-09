@@ -15,4 +15,15 @@ class Employee extends Model
     protected $table = 'employee';
     public $timestamps = false;
     protected $primaryKey = 'employee_id';
+
+    public function person(){
+        return $this->belongsTo('App\Person', 'person_id', 'person_id');
+    }
+    public function institution(){
+        return $this->belongsTo('App\Institution', 'institution_id', 'institution_id');
+    }
+    public function bloodRequests(){
+        return $this->hasMany('App\BloodRequest','employee_id','employee_id');
+    }
+
 }

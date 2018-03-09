@@ -7,6 +7,7 @@
  */
 
 namespace App\Http\Controllers;
+use App\City;
 use App\Institution;
 use App\Town;
 use Illuminate\Http\Request;
@@ -15,6 +16,12 @@ use Illuminate\Validation\Rules\In;
 
 class InstitutionController extends Controller
 {
+
+    public function showPage(){
+        $institutions = Institution::all();
+        $cities=City::all();
+        return view('kurum')->with('cities',$cities)->with('institutions',$institutions);
+    }
 
     public function addInstitution(Request $request){
         $institution = new Institution();

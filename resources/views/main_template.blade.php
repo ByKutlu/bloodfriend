@@ -30,8 +30,8 @@
 -->
         <div class="logo">
             <a href="" class="simple-text">
-                Blood 
-        <img src="material/img/logo.png" width=30/> Friend
+                Kan 
+        <img src="material/img/logo.png" width=30/> Dostum
             </a>
         </div>
         <div class="sidebar-wrapper" data-color="red">
@@ -157,5 +157,14 @@
 <script src="{{asset('material/js/material-dashboard.js?v=1.2.0')}}"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{asset('material/js/demo.js')}}"></script>
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
+@yield("javascript")
 
 </html>

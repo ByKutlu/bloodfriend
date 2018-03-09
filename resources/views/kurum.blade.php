@@ -35,6 +35,24 @@
                                                         <input type="text" class="form-control">
                                                         <span class="material-input"></span></div>
                                                 </div>
+
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="form-control-label">İl</label>
+                                                    <select class="form-control" id="city_id">
+                                                        <option value="1">Adana</option>
+                                                        <option>Afyon</option>
+                                                        <option>Aydın</option>
+                                                        <option value="35">İzmir</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="form-control-label">İlçe</label>
+                                                    <select class="form-control" id="town_id">
+                                                    </select>
+                                                </div>
+
+
+
                                                 <div class="col-md-3">
                                                     <div class="form-group label-floating is-empty">
                                                         <label class="control-label">Address</label>
@@ -110,6 +128,47 @@
                         </div>
 
 
+@endsection
 
-                        
+@section("javascript")
+    <script>
+        $( document ).ready(function() {
+            function getTown(city_id) {
+                if (city_id > 0) {
+                    $("#town_id").get(0).options.length = 0;
+                    $("#town_id").get(0).options[0] = new Option("Yükleniyor", "-1");
+                    $.ajax({
+                        type: "GET",
+                        url: "{{url('getTowns/')}}"+"/"+city_id,
+                        contentType: "application/json; charset=utf-8",
+
+                        success: function(msg) {
+                            $("#town_id").get(0).options.length = 0;
+                            $("#town_id").get(0).options[0] = new Option("Seçiniz", "-1");
+
+                            $.each(msg, function(index, town) {
+                                $("#town_id").get(0).options[$("#town_id").get(0).options.length] = new Option(town.name, town.town_id);
+                            });
+                            $('.selectpicker').selectpicker('refresh');
+                        },
+                        async: false,
+                        error: function() {
+                            $("#town_id").get(0).options.length = 0;
+                            alert("Ilçeler yükelenemedi!!!");
+                        }
+                    });
+                }
+                else {
+                    $("#town_id").get(0).options.length = 0;
+                }
+            }
+
+            $('#city_id').on('change', function (e) {
+                var city_id = e.target.value;
+                getTown(city_id);
+            });
+        });
+
+    </script>
+
 @endsection

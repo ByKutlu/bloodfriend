@@ -60,9 +60,7 @@
                                                 <li><a href="#pill7" data-toggle="tab">AB RH(+)</a></li>
                                                 <li><a href="#pill8" data-toggle="tab">AB RH(-)</a></li>
                                                 </ul>
-                                            
                                             </div>
-                                           
                                         <div class="col-md-2">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label"><h5>Kan Tipini Seçiniz !</h5></label>
@@ -71,12 +69,8 @@
                                                 <li><a href="#pill2" data-toggle="tab">Tramposit</a></li>
                                                 <li><a href="#pill3" data-toggle="tab">Kök Hücre</a></li>
                                                 </ul>
-                                            
                                             </div>
                                             </div>
-
-
-                                        
                                         <button type="submit" class="btn btn-info pull-right">Kan Talep Et</button>
                                         <div class="clearfix"></div>
                                     </form>

@@ -30,12 +30,56 @@
 -->
         <div class="logo">
             <a href="" class="simple-text">
-                Blood
+                Blood 
         <img src="material/img/logo.png" width=30/> Friend
             </a>
         </div>
         <div class="sidebar-wrapper" data-color="red">
-            @yield('nav')
+        <ul class="nav">
+                <li class="active">
+                    <a href="{{url("")}}">
+                        <i class="material-icons">home</i>
+                        <p>Ana Sayfa</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url("kantalebi")}}">
+                        <i class="material-icons">favorite</i>
+                        <p>Kan Talebi</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url("kantalebilistesi")}}">
+                    <i class="material-icons">assignment</i>
+                        <p>Kan Talep Listesi</p>
+                    </a>
+                </li>
+                <li >
+                    <a href="{{url("calisan")}}">
+                        <i class="material-icons">person</i>
+                        <p>Çalışanlar</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url("kurum")}}">
+                    <i class="material-icons">account_balance</i>
+                        <p>Kurumlar</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url("hakkimizda")}}">
+                    <i class="material-icons">new_releases</i>
+                        <p>Hakkımızda</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url("ayarlar")}}">
+                        <i class="material-icons">settings</i>
+                        <p>Ayarlar</p>
+                    </a>
+                </li>
+                
+            </ul>
         </div>
     </div>
     <div class="main-panel">
@@ -59,10 +103,10 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="http://localhost/bloodfriend/public/ayarlar">Ayarlar</a>
+                                    <a href="{{url("ayarlar")}}">Ayarlar</a>
                                 </li>
                                 <li>
-                                    <a href="#">Çıkış</a>
+                                    <a href="{{url("Login")}}">Çıkış</a>
                                 </li>
                             </ul>
                         </li>

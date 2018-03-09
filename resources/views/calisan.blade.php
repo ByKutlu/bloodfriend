@@ -57,6 +57,91 @@
                                     <p class="category">Hastane çalışanları hakkında tüm bilgilere düzenleme yapabilirsiniz !</p>
                                 </div>
                                 <div class="card-content table-responsive">
+                                    <div class="card-content">
+
+                                        <form>
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">ID</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Name</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Surname</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Username</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Password</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Gender</label>
+                                                        <input type="email" class="form-control">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Blood Group</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Date of Birth</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Phone Number</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Mail</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Address</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <button type="submit" class="btn btn-danger pull-right">Delete</button>
+                                            <button type="submit" class="btn btn-success pull-right">Update </button>
+                                            <button type="submit" class="btn btn-info pull-right">Add</button>
+                                            <div class="clearfix"></div>
+
+                                        </form>
+
+                                    </div>
+
                                     <table class="table">
                                         <thead class="text-danger">
                                             <tr>
@@ -86,6 +171,7 @@
                                                 <td>emrahemremm@gmail.com</td>
                                                 <td>Bornova İzmir</td>
                                             </tr>
+
                                             <tr>
                                                 <td>2</td>
                                                 <td>Osman</td>
@@ -117,92 +203,8 @@
                                             
                                             
                                         </tbody>
-
-                                        <div class="card-content">
-                                            
-   <form>    
-                <div class="row">
-                <div class="col-md-2">
-                        <div class="form-group label-floating">
-                            <label class="control-label">ID</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="form-group label-floating">
-                            <label class="control-label">Name</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="form-group label-floating">
-                            <label class="control-label">Surname</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="form-group label-floating">
-                            <label class="control-label">Username</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="form-group label-floating">
-                            <label class="control-label">Password</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="form-group label-floating">
-                            <label class="control-label">Gender</label>
-                            <input type="email" class="form-control">
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="row">
-                    <div class="col-md-2">
-                        <div class="form-group label-floating">
-                            <label class="control-label">Blood Group</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="form-group label-floating">
-                            <label class="control-label">Date of Birth</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="form-group label-floating">
-                            <label class="control-label">Phone Number</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="form-group label-floating">
-                            <label class="control-label">Mail</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group label-floating">
-                            <label class="control-label">Address</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-               
-                
-                <button type="submit" class="btn btn-danger pull-right">Delete</button>
-                <button type="submit" class="btn btn-success pull-right">Update </button>
-                <button type="submit" class="btn btn-info pull-right">Add</button>
-                <div class="clearfix"></div>
-            
-            </form>
-            
-        </div>
                                     </table>
+
                                 </div>
                             </div>
                         </div>

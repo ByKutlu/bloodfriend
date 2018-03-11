@@ -9,7 +9,6 @@
 namespace App\Http\Controllers;
 use App\City;
 use App\Institution;
-use App\Town;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\In;
 
@@ -32,5 +31,19 @@ class InstitutionController extends Controller
         $institution->fax = $request->fax;
         $institution->town_id = $request->town_id;
         $institution->save();
+    }
+    public function updateInstitution(Request $request){
+        $institution = Institution::find($request->institution_id);
+        $institution->name = $request->name;
+        $institution->description = $request->description;
+        $institution->phone = $request->phone;
+        $institution->mail = $request->mail;
+        $institution->fax = $request->fax;
+        $institution->town_id = $request->town_id;
+        $institution->save();
+    }
+    public function deleteInstitution(Request $request){
+        $institution = Institution::find($request->institution_id);
+        $institution->delete();
     }
 }

@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\BloodRequest;
+use App\Institution;
 use Illuminate\Http\Request;
 
 class BloodRequestController extends Controller
@@ -31,5 +32,11 @@ class BloodRequestController extends Controller
     {
         $bloodRequest = Institution::find($request->blood_request_id);
         $bloodRequest->delete();
+    }
+    public function makeInactive(Request $request)
+    {
+        $bloodRequest = Institution::find($request->blood_request_id);
+        $bloodRequest->isActive = 0;
+        $bloodRequest->save();
     }
 }

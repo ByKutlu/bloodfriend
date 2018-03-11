@@ -18,6 +18,7 @@
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -30,12 +31,56 @@
 -->
         <div class="logo">
             <a href="" class="simple-text">
-                Blood
-        <img src="material/img/logo.png" width=30/> Friend
+                Kan 
+        <img src="material/img/logo.png" width=30/> Dostum
             </a>
         </div>
         <div class="sidebar-wrapper" data-color="red">
-            @yield('nav')
+        <ul class="nav">
+                <li class="active">
+                    <a href="{{url("")}}">
+                        <i class="material-icons">home</i>
+                        <p>Ana Sayfa</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url("kantalebi")}}">
+                        <i class="material-icons">favorite</i>
+                        <p>Kan Talebi</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url("kantalebilistesi")}}">
+                    <i class="material-icons">assignment</i>
+                        <p>Kan Talep Listesi</p>
+                    </a>
+                </li>
+                <li >
+                    <a href="{{url("calisan")}}">
+                        <i class="material-icons">person</i>
+                        <p>Çalışanlar</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url("kurum")}}">
+                    <i class="material-icons">account_balance</i>
+                        <p>Kurumlar</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url("hakkimizda")}}">
+                    <i class="material-icons">new_releases</i>
+                        <p>Hakkımızda</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url("ayarlar")}}">
+                        <i class="material-icons">settings</i>
+                        <p>Ayarlar</p>
+                    </a>
+                </li>
+                
+            </ul>
         </div>
     </div>
     <div class="main-panel">
@@ -59,10 +104,10 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="http://localhost/bloodfriend/public/ayarlar">Ayarlar</a>
+                                    <a href="{{url("ayarlar")}}">Ayarlar</a>
                                 </li>
                                 <li>
-                                    <a href="#">Çıkış</a>
+                                    <a href="{{url("Login")}}">Çıkış</a>
                                 </li>
                             </ul>
                         </li>
@@ -113,5 +158,14 @@
 <script src="{{asset('material/js/material-dashboard.js?v=1.2.0')}}"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{asset('material/js/demo.js')}}"></script>
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
+@yield("javascript")
 
 </html>

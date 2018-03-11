@@ -18,9 +18,11 @@ Route::get('/', function () {
 Route::get('/calisan', function () {
     return view('calisan');
 });
-Route::get('/kurum', function () {
-    return view('kurum');
-});
+
+//KURUM FONKSIYONLARI
+Route::get('/kurum', 'InstitutionController@showPage');
+Route::post('/addInstitution','InstitutionController@addInstitution');
+
 Route::get('/hakkimizda', function () {
     return view('hakkimizda');
 });

@@ -36,3 +36,7 @@ Route::get('/kantalebilistesi', function () {
 
 Route::get('/getCities','AddressController@getCities');
 Route::get('/getTowns/{city_id}','AddressController@getTowns');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

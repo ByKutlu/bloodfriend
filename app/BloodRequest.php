@@ -26,5 +26,9 @@ class BloodRequest extends Model{
     public function employee(){
         return $this->belongsTo('App\Employee','employee_id','employee_id');
     }
+
+    public function user(){
+        return $this->belongsTo('App\User','user_id','user_id');
+    }
 }
 ?>

@@ -1,14 +1,31 @@
 <?php
 namespace App\Http\Controllers;
-use App\Person;
+use App\User;
 use App\Employee;
+use App\City;
+use App\Town;
+use App\Institution;
 use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    public function showPage(){
+        $persons = User::all();
+        $employees = Employee::all();
+        $institutions = Institution::all();
+        $cities=City::all();
+        return view('calisan')->with('cities',$cities)->with('persons',$persons)->with('employees',$employees)->with('institutions',$institutions);
+    }
+
+
+
     public function addEmployee(Request $r){
-        $person = new Person();
+        $person = new User();
         $person->name = $r->name;
         $person->surname = $r->surname;
         $person->username = $r->username;
@@ -21,7 +38,7 @@ class EmployeeController extends Controller
         $person->save();
 
         $employee = new Employee();
-        $employee->person_id = $person->person_id;
+        $employee->person_id = $person->user_id;
         $employee->instution_id = $r->instution_id;
         $employee->save();
     }

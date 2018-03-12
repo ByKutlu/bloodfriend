@@ -10,7 +10,24 @@ class Donor extends Model
     public $timestamps = false;
     protected $primaryKey = 'donor_id';
 
-    public function person(){
-        return $this->belongsTo('App\Person', 'person_id', 'person_id');
+    public function user(){
+        return $this->belongsTo('App\User', 'user_id', 'user_id');
     }
+
+    public function BloodRequestReplies(){
+        return $this->hasMany('App\BloodRequestReply', 'donor_id', 'donor_id');
+    }
+
+    public function FormReplies(){
+        return $this->hasMany('App\FormReply', 'donor_id', 'donor_id');
+    }
+
+    public function acceptedRequests(){
+        return $this->hasMany('App\AcceptedRequest','donor_id','donor_id');
+    }
+
+    public function rejectedRequests(){
+        return $this->hasMany('App\RejectedRequest','donor_id','donor_id');
+    }
+
 }

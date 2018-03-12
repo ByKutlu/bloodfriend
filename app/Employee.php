@@ -16,8 +16,8 @@ class Employee extends Model
     public $timestamps = false;
     protected $primaryKey = 'employee_id';
 
-    public function person(){
-        return $this->belongsTo('App\Person', 'person_id', 'person_id');
+    public function user(){
+        return $this->belongsTo('App\User', 'user_id', 'user_id');
     }
     public function institution(){
         return $this->belongsTo('App\Institution', 'institution_id', 'institution_id');

@@ -107,7 +107,7 @@
                                     <a href="{{url("ayarlar")}}">Ayarlar</a>
                                 </li>
                                 <li>
-                                    <a href="{{url("Login")}}">Çıkış</a>
+                                    <a href="{{url("login")}}">Çıkış</a>
                                 </li>
                             </ul>
                         </li>
@@ -165,6 +165,13 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
+
+
+
+
+
+
 
 @yield("javascript")
 

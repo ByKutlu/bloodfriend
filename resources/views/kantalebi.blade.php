@@ -37,15 +37,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                        
-                                            <div class="col-md-10">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Kaç ünite talep ediyorsun ?</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
+
                                         <div class="row">
                                         <div class="col-md-4">
                                                 <div class="form-group label-floating">

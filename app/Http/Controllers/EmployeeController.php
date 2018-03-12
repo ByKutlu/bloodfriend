@@ -2,11 +2,25 @@
 namespace App\Http\Controllers;
 use App\Person;
 use App\Employee;
+use App\City;
+use App\Town;
+use App\Institution;
 use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
+
+    public function showPage(){
+        $persons = Person::all();
+        $employees = Employee::all();
+        $institutions = Institution::all();
+        $cities=City::all();
+        return view('calisan')->with('cities',$cities)->with('persons',$persons)->with('employees',$employees)->with('institutions',$institutions);
+    }
+
+
+
     public function addEmployee(Request $r){
         $person = new Person();
         $person->name = $r->name;

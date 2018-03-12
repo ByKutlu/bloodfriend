@@ -15,19 +15,19 @@
 
                                     <div class="card-content">
 
-                                        <form action="{{url("addInstitution")}}" method="post">
+                                        <form>
                                             <div class="row">
 
                                                 <div class="col-md-3">
                                                     <div class="form-group label-floating is-empty">
                                                         <label class="control-label">Name</label>
-                                                        <input type="text" class="form-control" name="name">
+                                                        <input type="text" class="form-control" name="name" id="name">
                                                         <span class="material-input"></span></div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group label-floating is-empty">
                                                         <label class="control-label">Description</label>
-                                                        <input type="text" class="form-control" name="description">
+                                                        <input type="text" class="form-control" name="description" id="description">
                                                         <span class="material-input"></span></div>
                                                 </div>
 
@@ -52,7 +52,7 @@
                                                 <div class="col-md-3">
                                                     <div class="form-group label-floating is-empty">
                                                         <label class="control-label">Address</label>
-                                                        <input type="text" class="form-control" name="address">
+                                                        <input type="text" class="form-control" name="address" id="address">
                                                         <span class="material-input"></span></div>
                                                 </div>
                                             </div>
@@ -60,28 +60,28 @@
                                                 <div class="col-md-4">
                                                     <div class="form-group label-floating is-empty">
                                                         <label class="control-label">Phone</label>
-                                                        <input type="text" class="form-control" name="phone">
+                                                        <input type="text" class="form-control" name="phone" id="phone">
                                                         <span class="material-input"></span></div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group label-floating is-empty">
                                                         <label class="control-label">Mail</label>
-                                                        <input type="text" class="form-control" name="mail">
+                                                        <input type="text" class="form-control" name="mail" id="mail">
                                                         <span class="material-input"></span></div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group label-floating is-empty">
                                                         <label class="control-label" >Fax</label>
-                                                        <input type="text" class="form-control" name="fax">
+                                                        <input type="text" class="form-control" name="fax" id="fax">
                                                         <span class="material-input"></span>
                                                     </div>
                                                 </div>
 
                                             </div>
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            <input type="hidden"  id="_token" name="_token" value="{{ csrf_token() }}">
                                             <button type="submit" name="kurum_delete" class="btn btn-danger pull-right">Delete</button>
                                             <button type="submit" name="kurum_update" class="btn btn-success pull-right">Update</button>
-                                            <button type="submit" name="kurum_add" class="btn btn-info pull-right">Add</button>
+                                            <button id="institution_add" name="kurum_add" class="btn btn-info pull-right">Add</button>
 
 
                                             <div class="clearfix"></div>
@@ -160,7 +160,37 @@
                 getTown(city_id);
             });
         });
+        $("#institution_add").click(function(e) {
 
+            var name = $("#name").val();
+            var description = $("#description").val();
+            var town_id = $("#town_id").val();
+            var mail = $("#mail").val();
+            var phone = $("#phone").val();
+            var fax = $("#fax").val();
+            var token = $("#_token").val();
+            $.ajax({
+                type: "POST",
+                url: "{{url('addInstitution')}}",
+                data	:  {
+                    "name": name,
+                    "description": description,
+                    "town_id": town_id,
+                    "mail": mail,
+                    "phone": phone,
+                    "fax":fax,
+                    "_token":token
+                },
+
+                success: function(msg) {
+                    console.log(reply);
+                },
+                async: false,
+                error: function() {
+                    alert("Ekleme tamamlanamadı!!!");
+                }
+            });
+        });
     </script>
 
 @endsection

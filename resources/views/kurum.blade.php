@@ -4,123 +4,300 @@
     Kurumlar
 @endsection
 @section('content')
-<div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header" data-background-color="red">
-                                    <h4 class="title">Kurumlar</h4>
-                                    <p class="category">Hastaneler hakkında tüm bilgilere düzenleme yapabilirsiniz !</p>
-                                </div>
-                                <div class="card-content table-responsive">
 
 
-                                    <div class="card-content">
-
-                                        <form action="{{url("addInstitution")}}" method="post">
-                                            <div class="row">
-
-                                                <div class="col-md-3">
-                                                    <div class="form-group label-floating is-empty">
-                                                        <label class="control-label">Name</label>
-                                                        <input type="text" class="form-control" name="name">
-                                                        <span class="material-input"></span></div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group label-floating is-empty">
-                                                        <label class="control-label">Description</label>
-                                                        <input type="text" class="form-control" name="description">
-                                                        <span class="material-input"></span></div>
-                                                </div>
-
-                                                <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <select class="form-control" id="city_id">
-                                                        @foreach($cities as $city)
-                                                        <option value="{{$city->city_id}}">{{$city->name}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <select class="form-control" id="town_id" name="town_id">
-                                                    </select>
-                                                </div>
-                                                </div>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header" data-background-color="red">
+                <h4 class="title">Kurumlar</h4>
+                <p class="category">Hastaneler hakkinda tüm bilgilere düzenleme yapabilirsiniz !</p>
+            </div>
+            <div class="card-content table-responsive">
+                <div class="card-content">
 
 
+                    <button class="btn btn-info pull-right" data-toggle="modal" data-target="#ekle">EKLE</button>
 
-                                                <div class="col-md-3">
-                                                    <div class="form-group label-floating is-empty">
-                                                        <label class="control-label">Address</label>
-                                                        <input type="text" class="form-control" name="address">
-                                                        <span class="material-input"></span></div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <div class="form-group label-floating is-empty">
-                                                        <label class="control-label">Phone</label>
-                                                        <input type="text" class="form-control" name="phone">
-                                                        <span class="material-input"></span></div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group label-floating is-empty">
-                                                        <label class="control-label">Mail</label>
-                                                        <input type="text" class="form-control" name="mail">
-                                                        <span class="material-input"></span></div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group label-floating is-empty">
-                                                        <label class="control-label" >Fax</label>
-                                                        <input type="text" class="form-control" name="fax">
-                                                        <span class="material-input"></span>
-                                                    </div>
-                                                </div>
+                    <div class="modal fade bd-example-modal-lg" id ="ekle" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
 
-                                            </div>
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <button type="submit" name="kurum_delete" class="btn btn-danger pull-right">Delete</button>
-                                            <button type="submit" name="kurum_update" class="btn btn-success pull-right">Update</button>
-                                            <button type="submit" name="kurum_add" class="btn btn-info pull-right">Add</button>
-
-
-                                            <div class="clearfix"></div>
-                                        </form>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <br/>
+                                    <div class="card-header" data-background-color="red">
+                                        <h5 class="modal-title" id="exampleModalLabel">Kurum Ekle</h5>
                                     </div>
-                                    <table class="table">
-                                        <thead class="text-danger">
-                                            <tr>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Description</th>
-                                            <th>il</th>
-                                            <th>ilçe</th>
-                                            <th>Phone</th>
-                                            <th>Mail</th>
-                                            <th>Fax</th>
-                                        </tr></thead>
-                                        <tbody>
-                                        @foreach($institutions as $institution)
-                                            <tr>
-                                                <td>{{$institution->institution_id}}</td>
-                                                <td>{{$institution->name}}</td>
-                                                <td>{{$institution->description}}</td>
-                                                <td>{{$institution->town->city->name}}</td>
-                                                <td>{{$institution->town->name}}</td>
-                                                <td>{{$institution->mail}}</td>
-                                                <td>{{$institution->phone}}</td>
-                                                <td>{{$institution->fax}}</td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
+
+
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST">
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="form-control-label">Name</label>
+                                                <input type="text" name="name" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="form-control-label">Description</label>
+                                                <input type="text"name="description" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="form-control-label">Phone</label>
+                                                <input type="text"name="phone" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="form-control-label">Fax</label>
+                                                <input type="text"name="fax" class="form-control" id="recipient-name">
+                                            </div>
+                                        </div >
+
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="form-control-label">Mail</label>
+                                                <input type="text"name="mail" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="form-control-label">Il</label><br/>
+                                                <select class="form-control" id="city_id">
+                                                    @foreach($cities as $city)
+                                                        <option value="{{$city->city_id}}">{{$city->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="form-control-label">Ilçe</label><br/>
+                                                <select class="form-control" id="town_id" name="town_id">
+                                                </select>
+                                            </div>
+                                        </div >
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class=" col-md-12">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Vazgeç</button>
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <button type="button" class="btn btn-info">Ekle</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
+                    </div>
+                </div>
+
+            </div>
+            <table class="table">
+                <thead class="text-danger">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Mail</th>
+                    <th>Phone</th>
+                    <th>Fax</th>
+                    <th>Detayli Görme</th>
+                    <th>Güncelle Islemi</th>
+                    <th>Silme Islemi</th>
+
+                </tr></thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Dokuz Eylül Hastanesi</td>
+                    <td>Devlet Hastanesi</td>
+                    <td>dokuz.eylülhastesi@deu.edu.tr</td>
+                    <td>05545552211</td>
+                    <td>05545522233</td>
+                    <td>
+                        <button type="submit" data-toggle="modal" data-target="#detayli" class="btn btn-info pull-right">Detayli </button></td>
+                    <div class="modal fade bd-example-modal-lg" id="detayli" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <br/>
+                                    <div class="card-header" data-background-color="red">
+                                        <h5 class="modal-title" id="exampleModalLabel">Hastane Bilgileri</h5>
+                                    </div>
+
+
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST">
+                                        <div class="col-lg-6 col-md-12">
+
+                                            <div class="form-group">
+                                                <label>ID : </label>
+                                                <label name="institution_id">1</label>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Adi : </label>
+                                                <label name="name">Dokuz Eylül Hastanesi</label>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="form-control-label">Description : </label>
+                                                <label name="description">Devlet Hastanesi</label>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Mail : </label>
+                                                <label name="mail">dokuz.eylülhastesi@deu.edu.tr</label>
+
+                                            </div>
+
+                                        </div >
+                                        <div class="col-lg-6 col-md-12">
+
+                                            <div class="form-group">
+                                                <label>Phone : </label>
+                                                <label name="phone">05545552211</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Fax : </label>
+                                                <label name="fax">05545552233</label>
+
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Il : </label>
+                                                <label name="city_id">Izmir</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label >Ilçe : </label>
+                                                <label name="town_id">Balçova</label>
+                                            </div>
+
+                                        </div >
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class=" col-md-12">
+                                        <button type="button" class="btn btn-info" data-dismiss="modal">Tamam</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <td><button type="submit" data-toggle="modal" class="btn btn-success pull-right" data-target="#guncelle">Güncelle </button></td>
+                    <div class="modal fade bd-example-modal-lg" id ="guncelle" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <br/>
+                                    <div class="card-header" data-background-color="red">
+                                        <h5 class="modal-title" id="exampleModalLabel">Kurum Ekle</h5>
+                                    </div>
+
+
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST">
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="form-control-label">Name</label>
+                                                <input type="text" name="name" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="form-control-label">Description</label>
+                                                <input type="text"name="description" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="form-control-label">Phone</label>
+                                                <input type="text"name="phone" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="form-control-label">Fax</label>
+                                                <input type="text"name="fax" class="form-control" id="recipient-name">
+                                            </div>
+                                        </div >
+
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="form-control-label">Mail</label>
+                                                <input type="text"name="mail" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="form-control-label">Il</label><br/>
+                                                <select class="form-control" id="city_id">
+                                                    @foreach($cities as $city)
+                                                        <option value="{{$city->city_id}}">{{$city->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="form-control-label">Ilçe</label><br/>
+                                                <select class="form-control" id="town_id" name="town_id">
+                                                </select>
+                                            </div>
+                                        </div >
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class=" col-md-12">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Vazgeç</button>
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <button type="button" class="btn btn-info">Ekle</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <td><button type="submit" class="btn btn-danger pull-right" data-toggle="modal" data-target="#silme" >Sil</button></td>
+
+                    <div class="modal fade" id="silme">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Hastane Sil</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Bu hastane silinecektir. Emin misiniz ?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger ">Sil</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Vazgeç</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </tr>
+
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    </div>
+
+
+
 
 @endsection
-
 @section("javascript")
     <script>
         $( document ).ready(function() {

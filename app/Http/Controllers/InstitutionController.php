@@ -15,6 +15,10 @@ use Illuminate\Validation\Rules\In;
 
 class InstitutionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function showPage(){
         $institutions = Institution::all();

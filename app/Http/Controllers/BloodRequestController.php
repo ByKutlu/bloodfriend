@@ -14,7 +14,10 @@ use Illuminate\Http\Request;
 
 class BloodRequestController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function addBloodRequest(Request $request)
     {
         $bloodRequest = new BloodRequest();

@@ -1,93 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Login V2</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('signin_doc/vendor/bootstrap/css/bootstrap.min.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('signin_doc/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('signin_doc/fonts/iconic/css/material-design-iconic-font.min.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('signin_doc/vendor/animate/animate.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('signin_doc/vendor/css-hamburgers/hamburgers.min.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('signin_doc/vendor/animsition/css/animsition.min.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('signin_doc/vendor/select2/select2.min.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('signin_doc/vendor/daterangepicker/daterangepicker.css')}}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('signin_doc/css/util.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('signin_doc/css/main.css')}}">
-    <!--===============================================================================================-->
-</head>
-<body>
+@extends('auth.login_main_template')
 
-<div class="limiter">
-    <div class="container-login100">
-        <div class="wrap-login100">
-            <form class="login100-form validate-form">
+@section('content')
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
+                    {{ csrf_field() }}
 					<span class="login100-form-title p-b-26">
 						    KAN <img src="material/img/logo.png" width=50/>        DOSTUM
 					</span>
 
-                <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
-                    <input class="input100" type="text" name="email">
-                    <span class="focus-input100" data-placeholder="Email"></span>
-                </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Enter password">
+                    <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
+                        <input class="input100" type="text" name="email" value="{{ old('email') }}">
+                        <span class="focus-input100" data-placeholder="Email"></span>
+                    </div>
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-                    <input class="input100" type="password" name="password">
-                    <span class="focus-input100" data-placeholder="Password"></span>
-                </div>
-
-                <div class="container-login100-form-btn">
-                    <div class="wrap-login100-form-btn">
-                        <div class="login100-form-bgbtn"></div>
-                        <button class="login100-form-btn">
-                            Giriş Yap
-                        </button>
+                        <input class="input100" type="password" name="password">
+                        <span class="focus-input100" data-placeholder="Password"></span>
                     </div>
-                </div>
 
-                <div class="text-center p-t-115">
-                    <a class="txt2" href="#">
-                        Şifremi Unuttum
-                    </a>
-                </div>
-            </form>
+                        <div class="checkbox" style="font-size: 15px;">
+                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                        </div>
+
+                    @if ($errors->has('password') || $errors->has('email'))
+                        <div style="color: red;">
+                                        <strong>Email veya şifre bilgileri hatalı!!</strong>
+                                    </div>
+                    @endif
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button  type="submit" class="login100-form-btn">
+                                Giriş Yap
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="text-center p-t-115">
+                        <a class="txt2" href="{{ route('password.request') }}">
+                            Şifremi Unuttum
+                        </a>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
 
-<div id="dropDownSelect1"></div>
+    <div id="dropDownSelect1"></div>
 
-<!--===============================================================================================-->
-<script src="{{asset('signin_doc/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
-<!--===============================================================================================-->
-<script src="{{asset('signin_doc/vendor/animsition/js/animsition.min.js')}}"></script>
-<!--===============================================================================================-->
-<script src="{{asset('signin_doc/vendor/bootstrap/js/popper.js')}}"></script>
-<script src="{{asset('signin_doc/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-<!--===============================================================================================-->
-<script src="{{asset('signin_doc/vendor/select2/select2.min.js')}}"></script>
-<!--===============================================================================================-->
-<script src="{{asset('signin_doc/vendor/daterangepicker/moment.min.js')}}"></script>
-<script src="{{asset('signin_doc/vendor/daterangepicker/daterangepicker.js')}}"></script>
-<!--===============================================================================================-->
-<script src="{{asset('signin_doc/vendor/countdowntime/countdowntime.js')}}"></script>
-<!--===============================================================================================-->
-<script src="{{asset('signin_doc/js/main.js')}}"></script>
 
-</body>
-</html>
+
+@endsection

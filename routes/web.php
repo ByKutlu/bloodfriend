@@ -11,10 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
 
+Route::get('/', 'HomeController@index')->name('home');
 
 
 //KURUM FONKSIYONLARI

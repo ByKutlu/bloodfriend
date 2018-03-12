@@ -22,6 +22,8 @@ Route::get('/calisan', function () {
 //KURUM FONKSIYONLARI
 Route::get('/kurum', 'InstitutionController@showPage');
 Route::post('/addInstitution','InstitutionController@addInstitution');
+Route::post('/updateInstitution','InstitutionController@updateInstitution');
+Route::post('/deleteInstitution','InstitutionController@deleteInstitution');
 
 Route::get('/hakkimizda', function () {
     return view('hakkimizda');

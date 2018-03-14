@@ -17,6 +17,8 @@ Route::get('/', 'HomeController@index')->name('home');
 //KURUM FONKSIYONLARI
 Route::get('/kurum', 'InstitutionController@showPage');
 Route::post('/addInstitution','InstitutionController@addInstitution');
+Route::post('/updateInstitution','InstitutionController@updateInstitution');
+Route::post('/deleteInstitution','InstitutionController@deleteInstitution');
 
 //Çalışan FONKSIYONLARI
 Route::get('/calisan', 'EmployeeController@showPage');

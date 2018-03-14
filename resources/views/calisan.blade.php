@@ -169,7 +169,7 @@
 
                                                                         <div class="form-group">
                                                                             <label>ID : </label>
-                                                                            <label name="person_id">1</label>
+                                                                            <label name="user_id">1</label>
 
                                                                         </div>
                                                                         <div class="form-group">
@@ -346,7 +346,7 @@
                                                 </div>
 
 
-                                                <td><button type="submit" class="btn btn-danger pull-right" data-toggle="modal" data-target="#silme" >Sil</button></td>
+                                                <td><button type="submit" class="btn btn-danger pull-right"  name="user_id" data-toggle="modal" data-target="#silme" >Sil</button></td>
 
                                                 <div class="modal fade" id="silme">
                                                     <div class="modal-dialog" role="document">
@@ -361,7 +361,7 @@
                                                                 <p>Bu kişi silinecektir. Emin misiniz ?</p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-danger ">Sil</button>
+                                                                <button type="button" class="btn btn-danger " >Sil</button>
                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Vazgeç</button>
                                                             </div>
                                                         </div>

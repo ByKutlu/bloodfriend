@@ -33,8 +33,8 @@
                       
         
                     </div>
+                        <form method="POST" action="{{url('addEmployee')}}">
                     <div class="modal-body">
-                 <form method="POST">
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <label for="recipient-name" class="form-control-label">Name</label>
@@ -61,7 +61,7 @@
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="form-control-label">Blood Group</label>
-                            <select class="form-control" id="blood_group">
+                            <select class="form-control" id="blood_group" name="blood_group">
                                 <option value="A Rh(+)">A Rh(+)</option>
                                 <option value="A Rh(-)">A Rh(-)</option>
                                 <option value="B Rh(+)">B Rh(+)</option>
@@ -102,19 +102,21 @@
                         <div class="form-group">
                             <label for="recipient-name" class="form-control-label">Kurum</label><br/>
                             <select class="form-control" id="institution_id" name="institution_id">
+                                @foreach($institutions as $institution)
+                                    <option value="{{$institution->institution_id}}">{{$institution->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                         
                         </div >
-                 </form>
-                    </div>
-                    <div class="modal-footer">
-                    <div class=" col-md-12">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Vazgeç</button>
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <button type="button" class="btn btn-info">Ekle</button>
-                    </div>
-                    </div>
+                        <div class="modal-footer">
+                            <div class=" col-md-12">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Vazgeç</button>
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <button type="submit" class="btn btn-info">Ekle</button>
+                            </div>
+                        </div>
+                        </form>
                     </div>
                 </div>
                 
@@ -145,7 +147,7 @@
                                                 <td>A Rh(+)</td>
                                                 <td>05545552211</td>
                <td>
-                   <button type="submit" data-toggle="modal" data-target="#detaylı" class="btn btn-info pull-right">Detaylı </button></td>
+                   <button data-toggle="modal" data-target="#detaylı" class="btn btn-info pull-right">Detaylı </button></td>
                                                 <div class="modal fade bd-example-modal-lg" id="detaylı" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">

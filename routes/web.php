@@ -14,36 +14,25 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 
-
 //KURUM FONKSIYONLARI
 Route::get('/kurum', 'InstitutionController@showPage');
 Route::post('/addInstitution','InstitutionController@addInstitution');
 
 //Çalışan FONKSIYONLARI
 Route::get('/calisan', 'EmployeeController@showPage');
-Route::post('/addEmployee','EmployeeController@aaddEmployee');
+Route::post('/addEmployee','EmployeeController@addEmployee');
 
-Route::get('/hakkimizda', function () {
-    return view('hakkimizda');
-});
-Route::get('/ayarlar', function () {
-    return view('ayarlar');
-});
-Route::get('/kantalebi', function () {
-    return view('kantalebi');
-});
-Route::get('/kantalebilistesi', function () {
-    return view('kantalebilistesi');
-});
+Route::get('/hakkimizda', 'HomeController@hakkimizda');
+Route::get('/ayarlar', 'HomeController@ayarlar');
 
-/*Route::get('/login', function () {
-    return view('login');
-});*/
+//BLOOD REQUEST
+Route::get('/kantalebi','BloodRequestController@kantalebi');
+Route::get('/kantalebilistesi','BloodRequestController@kantalebilistesi');
 
-
+//ADRESS
 Route::get('/getCities','AddressController@getCities');
 Route::get('/getTowns/{city_id}','AddressController@getTowns');
 
+//AUTHENTICATION
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');

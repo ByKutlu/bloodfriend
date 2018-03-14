@@ -25,4 +25,14 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function hakkimizda()
+    {
+        return view('hakkimizda');
+    }
+
+    public function ayarlar()
+    {
+        return view('home');
+    }
 }

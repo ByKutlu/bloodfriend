@@ -78,17 +78,21 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label  class="control-label">İl</label><br/>
+                                                <div class="form-group label-floating">
+                                                <label  class="control-label">İl</label>
                                                 <select class="form-control" id="city_id">
                                                     @foreach($cities as $city)
                                                         <option value="{{$city->city_id}}">{{$city->name}}</option>
                                                     @endforeach
                                                 </select>
+                                                </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label  class="control-label">İlçe</label><br/>
-                                                <select class="form-control" id="town_id_0" name="town_id">
-                                                </select>
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">İlçe</label>
+                                                    <select class="form-control" id="town_id" name="town_id">
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                         

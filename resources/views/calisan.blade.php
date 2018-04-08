@@ -1,7 +1,7 @@
 @extends('main_template')
 
 @section('title')
-    Çalışanlar
+
 @endsection
 @section('content')
 
@@ -9,6 +9,13 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header" data-background-color="red">
+                <ul class="nav nav-tabs pull-right " data-tabs="tabs">
+                    <li class="pull-right">
+                        <a href=""  data-toggle="modal" data-target="#ekle" data-toggle="tab" aria-expanded="false">
+                            <i class="material-icons">note_add</i>EKLE</i>
+                        </a>
+                    </li>
+                </ul>
                 <h4 class="title">Çalışanlar</h4>
                 <p class="category">Hastane çalışanları hakkında tüm bilgilere düzenleme yapabilirsiniz !</p>
             </div>
@@ -16,7 +23,7 @@
                 <div class="card-content">
 
 
-                    <button class="btn btn-info pull-right" data-toggle="modal" data-target="#ekle">EKLE</button>
+
 
                     <div class="modal fade bd-example-modal-lg" id ="ekle" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
@@ -124,19 +131,18 @@
                     </div>
                 </div>
 
-            </div>
+
             <table class="table">
                 <thead class="text-danger">
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Surname</th>
-                    <th>Gender</th>
-                    <th>Blood Group</th>
-                    <th>Phone</th>
-                    <th>Detaylı Görme</th>
-                    <th>Güncelle İşlemi</th>
-                    <th>Silme İşlemi</th>
+                    <th>Adı</th>
+                    <th>Soyadı</th>
+                    <th>Cinsiyet</th>
+                    <th>Kan Grubu</th>
+                    <th>Telefon</th>
+                    <th>İşlemler</th>
+
 
                 </tr></thead>
                 <tbody>
@@ -148,7 +154,8 @@
                     <td>A Rh(+)</td>
                     <td>05545552211</td>
                     <td>
-                        <button type="submit" data-toggle="modal" data-target="#detaylı" class="btn btn-info pull-right">Detaylı </button></td>
+
+                        <button  data-toggle="modal" rel="tooltip" data-target="#detaylı" class="btn btn-info btn-simple btn-xs"><i class="material-icons">description</i> </button>
                     <div class="modal fade bd-example-modal-lg" id="detaylı" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
@@ -243,7 +250,7 @@
                     </div>
 
 
-                    <td><button type="submit" data-toggle="modal" class="btn btn-success pull-right" data-target="#guncelle">Güncelle </button></td>
+                    <button  data-toggle="modal" rel="tooltip" class="btn btn-success btn-simple btn-xs" data-target="#guncelle"><i class="material-icons">edit</i> </button>
                     <div class="modal fade bd-example-modal-lg" id="guncelle" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
@@ -346,8 +353,8 @@
 
                     </div>
 
-
-                    <td><button type="submit" class="btn btn-danger pull-right"  name="user_id" data-toggle="modal" data-target="#silme" >Sil</button></td>
+                     
+                    <button  class="btn btn-danger btn-simple btn-xs" rel="tooltip"  name="user_id" data-toggle="modal" data-target="#silme" ><i class="material-icons">delete</button></td>
 
                     <div class="modal fade" id="silme">
                         <div class="modal-dialog" role="document">

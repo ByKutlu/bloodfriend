@@ -14,7 +14,7 @@
                                     <p class="category">Profilinizi Düzenleyebilirsiniz !</p>
                                 </div>
                                 <div class="card-content">
-                                    <form>
+                                    <form method="POST">
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="form-group label-floating">
@@ -74,14 +74,21 @@
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Mail</label>
                                                     <input type="email" name="mail" class="form-control">
+
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <label  class="control-label">İl</label><br/>
-
+                                                <select class="form-control" id="city_id">
+                                                    @foreach($cities as $city)
+                                                        <option value="{{$city->city_id}}">{{$city->name}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="col-md-4">
                                                 <label  class="control-label">İlçe</label><br/>
+                                                <select class="form-control" id="town_id_0" name="town_id">
+                                                </select>
                                             </div>
                                         </div>
                                         
@@ -95,4 +102,54 @@
                     </div>
                 </div>
             </div>
+@endsection
+
+
+@section("javascript")
+    <script>
+        $( document ).ready(function() {
+            getTown(1);
+            function getTown(city_id) {
+                if (city_id > 0) {
+                    $("#town_id").get(0).options.length = 0;
+                    $("#town_id").get(0).options[0] = new Option("Yükleniyor", "-1");
+                    $.ajax({
+                        type: "GET",
+                        url: "{{url('getTowns/')}}"+"/"+city_id,
+                        contentType: "application/json; charset=utf-8",
+
+                        success: function(msg) {
+                            $("#town_id").get(0).options.length = 0;
+                            $("#town_id").get(0).options[0] = new Option("Seçiniz", "-1");
+
+                            $.each(msg, function(index, town) {
+                                $("#town_id").get(0).options[$("#town_id").get(0).options.length] = new Option(town.name, town.town_id);
+                            });
+                            $('.selectpicker').selectpicker('refresh');
+                        },
+                        async: false,
+                        error: function() {
+                            $("#town_id").get(0).options.length = 0;
+                            alert("Ilçeler yükelenemedi!!!");
+                        }
+                    });
+                }
+                else {
+                    $("#town_id").get(0).options.length = 0;
+                }
+            }
+
+            $('#city_id').on('change', function (e) {
+                var city_id = e.target.value;
+                getTown(city_id);
+            });
+        });
+
+    </script>
+
+
+
+
+
+
 @endsection

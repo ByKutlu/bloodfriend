@@ -1,44 +1,40 @@
 @extends('main_template')
 
 @section('title')
-
+    Çalışanlar
 @endsection
 @section('content')
 
 
-    <div class="col-md-12">
-          <div class="card">
-             <div class="card-header" data-background-color="red">
-                 <ul class="nav nav-tabs pull-right " data-tabs="tabs">
-                     <li class="pull-right">
-                         <a href=""  data-toggle="modal" data-target="#ekle" data-toggle="tab" aria-expanded="false">
-                             <i class="material-icons">note_add</i>EKLE</i>
-                         </a>
-                     </li>
-                 </ul>
-                  <h4 class="title">Çalışanlar</h4>
-                  <p class="category">Hastane çalışanları hakkında tüm bilgilere düzenleme yapabilirsiniz !</p>
-             </div>
+<div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header" data-background-color="red">
+                                    <h4 class="title">Çalışanlar</h4>
+                                    <p class="category">Hastane çalışanları hakkında tüm bilgilere düzenleme yapabilirsiniz !</p>
+                                </div>
+                                <div class="card-content table-responsive">
+                                    <div class="card-content">
 
+            
+            <button class="btn btn-info pull-right" data-toggle="modal" data-target="#ekle">EKLE</button>
 
-             <div class="card-content table-responsive">
-                 <div class="card-content">
+<div class="modal fade bd-example-modal-lg" id ="ekle" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                    <div class="modal-header">
 
-                    <div class="modal fade bd-example-modal-lg" id ="ekle" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                 <div class="modal-header">
-
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <br/>
-                                    <div class="card-header" data-background-color="red">
-                                        <h5 class="modal-title" id="exampleModalLabel">Çalışan Ekle</h5>
-                                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        <br/>
+                    <div class="card-header" data-background-color="red">
+                        <h5 class="modal-title" id="exampleModalLabel">Çalışan Ekle</h5>
+                        </div>
+                      
+        
                     </div>
-                        <form method="POST" action="{{url('addEmployee')}}">
                     <div class="modal-body">
+                 <form method="POST">
                     <div class="col-lg-4 col-md-12">
                         <div class="form-group">
                             <label for="recipient-name" class="form-control-label">Name</label>
@@ -65,7 +61,7 @@
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="form-control-label">Blood Group</label>
-                            <select class="form-control" id="blood_group" name="blood_group">
+                            <select class="form-control" id="blood_group">
                                 <option value="A Rh(+)">A Rh(+)</option>
                                 <option value="A Rh(-)">A Rh(-)</option>
                                 <option value="B Rh(+)">B Rh(+)</option>
@@ -106,22 +102,19 @@
                         <div class="form-group">
                             <label for="recipient-name" class="form-control-label">Kurum</label><br/>
                             <select class="form-control" id="institution_id" name="institution_id">
-                                @foreach($institutions as $institution)
-                                    <option value="{{$institution->institution_id}}">{{$institution->name}}</option>
-                                @endforeach
                             </select>
                         </div>
                         
                         </div >
-                        <div class="modal-footer">
-                            <div class=" col-md-12">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Vazgeç</button>
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <button type="submit" class="btn btn-info">Ekle</button>
-                            </div>
-                        </div>
+                 </form>
                     </div>
-                        </form>
+                    <div class="modal-footer">
+                    <div class=" col-md-12">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Vazgeç</button>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <button type="button" class="btn btn-info">Ekle</button>
+                    </div>
+                    </div>
                     </div>
                 </div>
                 
@@ -152,9 +145,8 @@
                                                 <td>A Rh(+)</td>
                                                 <td>05545552211</td>
                <td>
-                   <button data-toggle="modal" data-target="#detaylı" class="btn btn-info pull-right">Detaylı </button></td>
+                   <button type="submit" data-toggle="modal" data-target="#detaylı" class="btn btn-info pull-right">Detaylı </button></td>
                                                 <div class="modal fade bd-example-modal-lg" id="detaylı" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -247,9 +239,9 @@
 
                                                 </div>
 
-                                    <button type="button" rel="tooltip" title="" class="btn btn-success btn-simple btn-xs" data-original-title="Update" data-toggle="modal" class="btn btn-success pull-right" data-target="#guncelle" data-original-title="Güncelleme"><i class="material-icons">edit</i> </button>
 
-                                    <div class="modal fade bd-example-modal-lg" id="guncelle" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                                <td><button type="submit" data-toggle="modal" class="btn btn-success pull-right" data-target="#guncelle">Güncelle </button></td>
+                                                <div class="modal fade bd-example-modal-lg" id="guncelle" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -268,33 +260,30 @@
                                                                 <form method="POST">
                                                                     <div class="col-lg-4 col-md-12">
                                                                         <div class="form-group">
-                                                                            <label for="recipient-name" class="form-control-label">Adı</label>
+                                                                            <label for="recipient-name" class="form-control-label">Name</label>
                                                                             <input type="text" name="name" class="form-control" id="recipient-name">
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label for="recipient-name" class="form-control-label">Soyadı</label>
+                                                                            <label for="recipient-name" class="form-control-label">Suname</label>
                                                                             <input type="text"name="surname" class="form-control" id="recipient-name">
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label for="recipient-name" class="form-control-label">Kullanıcı Adı</label>
+                                                                            <label for="recipient-name" class="form-control-label">Username</label>
                                                                             <input type="text"name="username" class="form-control" id="recipient-name">
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label for="recipient-name" class="form-control-label">Şifre</label>
+                                                                            <label for="recipient-name" class="form-control-label">Password</label>
                                                                             <input type="text"name="password" class="form-control" id="recipient-name">
                                                                         </div>
                                                                     </div >
                                                                     <div class="col-lg-4 col-md-12">
 
                                                                         <div class="form-group">
-                                                                            <label for="recipient-name" class="form-control-label">Cinsiyet</label>
-                                                                            <select class="form-control" id="gender_type">
-                                                                                <option value="bay">Bay</option>
-                                                                                <option value="bayan">Bayan</option>
-                                                                            </select>
+                                                                            <label for="recipient-name" class="form-control-label">Gender</label>
+                                                                            <input type="text"name="gender" class="form-control" id="recipient-name">
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label for="recipient-name" class="form-control-label">Kan Grubu</label>
+                                                                            <label for="recipient-name" class="form-control-label">Blood Group</label>
                                                                             <select class="form-control" id="blood_type">
                                                                                 <option value="A Rh(+)">A Rh(+)</option>
                                                                                 <option value="A Rh(-)">A Rh(-)</option>
@@ -307,17 +296,17 @@
                                                                             </select>
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label for="recipient-name" class="form-control-label">Doğum Tarihi</label>
+                                                                            <label for="recipient-name" class="form-control-label">Date of Birth</label>
                                                                             <input type="text"name="date_of_birth" class="form-control" id="recipient-name">
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label for="recipient-name" class="form-control-label">Mail</label>
-                                                                            <input type="email"name="mail" class="form-control" id="recipient-name">
+                                                                            <input type="text"name="mail" class="form-control" id="recipient-name">
                                                                         </div>
                                                                     </div >
                                                                     <div class="col-lg-4 col-md-12">
                                                                         <div class="form-group">
-                                                                            <label for="recipient-name" class="form-control-label">Telefon</label>
+                                                                            <label for="recipient-name" class="form-control-label">Phone</label>
                                                                             <input type="text"name="phone" class="form-control" id="recipient-name">
                                                                         </div>
                                                                         <div class="form-group">
@@ -354,9 +343,10 @@
 
                                                 </div>
 
-                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs" data-original-title="Remove" data-toggle="modal" data-target="#silme" data-original-title="Silme" ><i class="material-icons">close</i></button>
 
-                                    <div class="modal fade" id="silme">
+                                                <td><button type="submit" class="btn btn-danger pull-right"  name="user_id" data-toggle="modal" data-target="#silme" >Sil</button></td>
+
+                                                <div class="modal fade" id="silme">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -366,7 +356,7 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <p>Bu kişiyi silmekten emin misiniz ?</p>
+                                                                <p>Bu kişi silinecektir. Emin misiniz ?</p>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-danger " >Sil</button>
@@ -375,13 +365,17 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                             </tr>
-                        </tbody>
-                    </table>
-                </div>
-             </div>
-          </div>
-    </div>
+
+
+                                            </tr>
+
+                                            
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
 
 
 
@@ -428,23 +422,5 @@
         });
 
     </script>
-
-
-    <script>
-        $(document).ready(function(){
-            var date_input=$('input[name="date"]'); //our date input has the name "date"
-            var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-            var options={
-                format: 'yyyy/dd/mm',
-                container: container,
-                todayHighlight: true,
-                autoclose: true,
-            };
-            date_input.datepicker(options);
-        })
-    </script>
-
-
-
 
 @endsection

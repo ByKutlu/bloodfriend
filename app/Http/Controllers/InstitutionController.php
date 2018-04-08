@@ -24,7 +24,8 @@ class InstitutionController extends Controller
     public function showPage(){
         $institutions = Institution::all();
         $cities=City::all();
-        return view('kurum')->with('cities',$cities)->with('institutions',$institutions);
+        $isActive = FunctionController::getIsActiveOfMenu("kurum");
+        return view('kurum')->with('isActive',$isActive)->with('cities',$cities)->with('institutions',$institutions);
     }
 
     public function addInstitution(Request $request){

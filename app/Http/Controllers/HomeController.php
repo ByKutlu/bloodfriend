@@ -23,16 +23,27 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if(session()->get('user_type')=="employee"){
+            $isActive = FunctionController::getIsActiveOfMenu("home");
+            return view('home')->with('isActive',$isActive);
+        }
+        elseif(session()->get('user_type')=="admin"){
+            return redirect()->route('instution');
+        }
+        else{
+            abort(403);
+        }
     }
 
     public function hakkimizda()
     {
-        return view('hakkimizda');
+        $isActive = FunctionController::getIsActiveOfMenu("hakkimizda");
+        return view('hakkimizda')->with('isActive',$isActive);
     }
 
     public function ayarlar()
     {
-        return view('ayarlar');
+        $isActive = FunctionController::getIsActiveOfMenu("ayarlar");
+        return view('ayarlar')->with('isActive',$isActive);
     }
 }

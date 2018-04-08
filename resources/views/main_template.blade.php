@@ -19,8 +19,6 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 
-
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
@@ -41,55 +39,73 @@
         </div>
         <div class="sidebar-wrapper" data-color="red">
         <ul class="nav">
-                <li class="active">
+            @if(session()->get('user_type')=="employee")
+                <li class="{{$isActive["home"]}}">
                     <a href="{{url("")}}" id="home">
                         <i class="material-icons">home</i>
                         <p>Ana Sayfa</p>
                     </a>
                 </li >
-                <li class="">
+                <li class="{{$isActive["kantalebi"]}}">
                     <a href="{{url("kantalebi")}}" id="kantalebi">
                         <i class="material-icons">favorite</i>
                         <p>Kan Talebi</p>
                     </a>
                 </li>
-                <li>
+                <li class="{{$isActive["kantalebilistesi"]}}">
                     <a href="{{url("kantalebilistesi")}}" id="kantalebilistesi">
                     <i class="material-icons">assignment</i>
                         <p>Kan Talep Listesi</p>
                     </a>
                 </li>
-                <li >
+                @if(session()->get('employee_role')=="manager")
+                <li class="{{$isActive["calisan"]}}">
                     <a href="{{url("calisan")}}" id="calisan">
                         <i class="material-icons">person</i>
                         <p>Çalışanlar</p>
                     </a>
                 </li>
-                <li>
+                @endif
+            @endif
+            @if(session()->get('user_type')=="admin")
+                <li class="{{$isActive["kurum"]}}">
                     <a href="{{url("kurum")}}" id="kurum">
                     <i class="material-icons">account_balance</i>
                         <p>Kurumlar</p>
                     </a>
                 </li>
-                <li>
+                <li class="{{$isActive["calisan"]}}">
+                    <a href="{{url("calisan")}}" id="calisan">
+                        <i class="material-icons">person</i>
+                        <p>Çalışanlar</p>
+                    </a>
+                </li>
+            @endif
+                <li class="{{$isActive["hakkimizda"]}}">
                     <a href="{{url("hakkimizda")}}" id="hakkimizda">
                     <i class="material-icons">new_releases</i>
                         <p>Hakkımızda</p>
                     </a>
                 </li>
-                <li>
+                <li class="{{$isActive["ayarlar"]}}">
                     <a href="{{url("ayarlar")}}" id="ayarlar">
                         <i class="material-icons">settings</i>
                         <p>Ayarlar</p>
                     </a>
                 </li>
 
+            @if(session()->get('yetki')=="pro")
                 <li class="active-pro">
-                    <a href="upgrade.html">
+                    <a href="{{url("change_usertype")}}">
                         <i class="material-icons">unarchive</i>
-                        <p>Upgrade to PRO</p>
+                        @if(session()->get('user_type')=="admin")
+                        <p>Çalışan Moduna Geç</p>
+                        @else
+                        <p>Admin Moduna Geç</p>
+                        @endif
                     </a>
                 </li>
+            @endif
             </ul>
 
 
@@ -182,144 +198,11 @@
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{asset('material/js/demo.js')}}"></script>
 
-
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 
-
-<!--  jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-<!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
-<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
-
-<!-- Bootstrap Date-Picker Plugin -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
-
-
-<script>
-
-  /*  $('.nav').on('click',li,function () {
-        $('.nav li.active').removeClass('active');
-        $(this).addClass('active');
-    })*/
- /* $(document).ready(function(){
-      $(".sidebar-wrapper .nav ul li a").each(function(){
-          if($(this).attr("href")=="www.xyz.com/other/link1")
-              $(this).addClass("active");
-      })
-  })
-*/
-    $(document).on('click', 'a[href^="{{url("")}}"]', function (event) {
-
-         if ($(this).attr("href") == "{{url("")}}" || $(this).attr("href") == "{{url("kantalebi")}}" || $(this).attr("href") == "{{url("kantalebilistesi")}}" || $(this).attr("href") == "{{url("calisan")}}" || $(this).attr("href") == "{{url("kurum")}}" || $(this).attr("href") == "{{url("hakkimizda")}}" || $(this).attr("href") == "{{url("ayarlar")}}") {
-
-            if ($(this).attr("href") == "home") {
-
-                $("{{url("")}}").addClass("active");
-                $("{{url("kantalebi")}}").removeClass("active");
-                $("{{url("kantalebilistesi")}}").removeClass("active");
-                $("{{url("calisan")}}").removeClass("active");
-                $("{{url("kurum")}}").removeClass("active");
-                $("{{url("hakkimizda")}}").removeClass("active");
-                $("{{url("ayarlar")}}").removeClass("active");
-            }
-            else if ($(this).attr("href") == "kantalebi") {
-                $("{{url("")}}").removeClass("active");
-                $("{{url("kantalebi")}}").addClass("active");
-                $("{{url("kantalebilistesi")}}").removeClass("active");
-                $("{{url("calisan")}}").removeClass("active");
-                $("{{url("kurum")}}").removeClass("active");
-                $("{{url("hakkimizda")}}").removeClass("active");
-                $("{{url("ayarlar")}}").removeClass("active");
-            }
-            else if ($(this).attr("href") == "kantalebilistesi") {
-                $("{{url("")}}").removeClass("active");
-                $("{{url("kantalebi")}}").removeClass("active");
-                $("{{url("kantalebilistesi")}}").addClass("active");
-                $("{{url("calisan")}}").removeClass("active");
-                $("{{url("kurum")}}").removeClass("active");
-                $("{{url("hakkimizda")}}").removeClass("active");
-                $("{{url("ayarlar")}}").removeClass("active");
-            }
-            else if ($(this).attr("href") == "calisan") {
-                $("{{url("")}}").removeClass("active");
-                $("{{url("kantalebi")}}").removeClass("active");
-                $("{{url("kantalebilistesi")}}").removeClass("active");
-                $("{{url("calisan")}}").addClass("active");
-                $("{{url("kurum")}}").removeClass("active");
-                $("{{url("hakkimizda")}}").removeClass("active");
-                $("{{url("ayarlar")}}").removeClass("active");
-            }
-            else if ($(this).attr("href") == "kurum") {
-                $("{{url("")}}").removeClass("active");
-                $("{{url("kantalebi")}}").removeClass("active");
-                $("{{url("kantalebilistesi")}}").removeClass("active");
-                $("{{url("calisan")}}").removeClass("active");
-                $("{{url("kurum")}}").addClass("active");
-                $("{{url("hakkimizda")}}").removeClass("active");
-                $("{{url("ayarlar")}}").removeClass("active");
-            }
-            else if ($(this).attr("href") == "hakkimizda") {
-                $("{{url("")}}").removeClass("active");
-                $("{{url("kantalebi")}}").removeClass("active");
-                $("{{url("kantalebilistesi")}}").removeClass("active");
-                $("{{url("calisan")}}").removeClass("active");
-                $("{{url("kurum")}}").removeClass("active");
-                $("{{url("hakkimizda")}}").addClass("active");
-                $("{{url("ayarlar")}}").removeClass("active");
-            }
-            else if ($(this).attr("href") == "ayarlar") {
-                $("{{url("")}}").removeClass("active");
-                $("{{url("kantalebi")}}").removeClass("active");
-                $("{{url("kantalebilistesi")}}").removeClass("active");
-                $("{{url("calisan")}}").removeClass("active");
-                $("{{url("kurum")}}").removeClass("active");
-                $("{{url("hakkimizda")}}").removeClass("active");
-                $("{{url("ayarlar")}}").addClass("active");
-            }
-        }
-
-    });
-
-
-
-
-
-/*
-  $(document).on('click', 'a[href^="#"]', function (event) {
-      var url = window.location.pathname,
-          urlRegExp = new RegExp(url.replace(/\/$/,'') + "$"); // create regexp to match current url pathname and remove trailing slash if present as it could collide with the link in navigation in case trailing slash wasn't present there
-      // now grab every link from the navigation
-      $('.menu a').each(function(){
-          // and test its normalized href against the url pathname regexp
-          if(urlRegExp.test(this.href.replace(/\/$/,''))){
-              $(this).addClass('active');
-          }
-      });
-
-      /*var activeurl = window.location;
-      $('a[href="'+activeurl+'"]').parent('li').addClass('active');*/
-/*
-
-  });
-*/
-
-</script>
-
-
-
-
-
 @yield("javascript")
-
-
-
-
-
 </html>

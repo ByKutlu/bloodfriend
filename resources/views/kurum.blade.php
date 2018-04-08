@@ -1,7 +1,7 @@
 @extends('main_template')
 
 @section('title')
-
+    Kurumlar
 @endsection
 @section('content')
 
@@ -9,21 +9,16 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header" data-background-color="red">
-                <ul class="nav nav-tabs pull-right " data-tabs="tabs">
-                    <li class="pull-right">
-                        <a href=""  data-toggle="modal" data-target="#ekle" data-toggle="tab" aria-expanded="false">
-                            <i class="material-icons">note_add</i>EKLE</i>
-                        </a>
-                    </li>
-                </ul>
                 <h4 class="title">Kurumlar</h4>
                 <p class="category">Hastaneler hakkinda tüm bilgilere düzenleme yapabilirsiniz !</p>
-
             </div>
             <div class="card-content table-responsive">
-               <div class="card-content">
+                <div class="card-content">
 
-                 <div class="modal fade bd-example-modal-lg" id ="ekle" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+
+                    <button class="btn btn-info pull-right" data-toggle="modal" data-target="#ekle">EKLE</button>
+
+                    <div class="modal fade bd-example-modal-lg" id ="ekle" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -42,7 +37,6 @@
                                     <form>
                                         <div class="col-lg-6 col-md-12">
                                             <div class="form-group">
-
                                                 <label for="recipient-name" class="form-control-label">Name</label>
                                                 <input type="text" name="name" class="form-control" id="name">
                                             </div>
@@ -57,7 +51,6 @@
                                             <div class="form-group">
                                                 <label for="recipient-name" class="form-control-label">Fax</label>
                                                 <input type="text"name="fax" class="form-control" id="fax">
-
                                             </div>
                                         </div >
 
@@ -160,15 +153,10 @@
                                                 <label>Mail : </label>
                                                 <label name="mail">{{$institution->mail}}</label>
 
-
-                                                </div>
                                             </div>
-                                    </form>
-                                </div>
-                                    </div>
 
-                                </div>
-
+                                        </div >
+                                        <div class="col-lg-6 col-md-12">
 
                                             <div class="form-group">
                                                 <label>Phone : </label>
@@ -178,21 +166,7 @@
                                                 <label>Fax : </label>
                                                 <label name="fax">{{$institution->fax}}</label>
 
-
-                                <button type="button" rel="tooltip" title="" class="btn btn-success btn-simple btn-xs" data-original-title="Güncelle" data-toggle="modal" class="btn btn-success pull-right" data-target="#guncelle" ><i class="material-icons">edit</i> </button>
-                                <div class="modal fade bd-example-modal-lg" id ="guncelle" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                                <br/>
-                                                <div class="card-header" data-background-color="red">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Kurum Bilgilerini Güncelle</h5>
-                                                </div>
                                             </div>
-
 
                                             <div class="form-group">
                                                 <label>Il : </label>
@@ -201,11 +175,19 @@
                                             <div class="form-group">
                                                 <label >Ilçe : </label>
                                                 <label name="town_id">{{$institution->town->name}}</label>
-
                                             </div>
-                                        </div>
+
+                                        </div >
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class=" col-md-12">
+                                        <button type="button" class="btn btn-info" data-dismiss="modal">Tamam</button>
+
                                     </div>
                                 </div>
+                            </div>
+                        </div>
 
                     </div>
 
@@ -303,18 +285,16 @@
                         </div>
                     </div>
 
-                    </div>
+
                 </tr>
 
                 @endforeach
                 </tbody>
             </table>
 
-
-            </div>
         </div>
     </div>
-
+    </div>
 
 
 @endsection

@@ -62,8 +62,8 @@ a:focus {
 a:hover {
 	text-decoration: none;
   color: #6a7dfe;
-  color: -webkit-linear-gradient(left, #21d4fd, #b721ff);
-  color: -o-linear-gradient(left, #21d4fd, #b721ff);
+  color: -webkit-linear-gradient(left, #21d4fd, #d31f26);
+  color: -o-linear-gradient(left, #21d4fd, #d31f26);
   color: -moz-linear-gradient(left, #21d4fd, #b721ff);
   color: linear-gradient(left, #21d4fd, #b721ff);
 }
@@ -174,7 +174,7 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background: #f2f2f2;  
+  background: #d31f26;
 }
 
 .wrap-login100 {

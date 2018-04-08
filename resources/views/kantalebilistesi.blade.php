@@ -1,7 +1,7 @@
 @extends('main_template')
 
 @section('title')
-    Kan Talep Listesi
+
 @endsection
 @section('content')
 
@@ -11,12 +11,11 @@
             <div class="card-header" data-background-color="red">
                 <h4 class="title">Kan Talep Listesi</h4>
                 <p class="category">Talep edilen tüm kanlar hakkında tüm bilgilere görebilir ve düzenleme yapabilirsiniz !</p>
+
             </div>
             <div class="card-content table-responsive">
-
-
-            </div>
-            <table class="table">
+             <div class="card-content">
+                <table class="table">
                 <thead class="text-danger">
                 <tr>
                     <th>ID</th>
@@ -25,11 +24,11 @@
                     <th>Kan Ünite Sayısı</th>
                     <th>Kan Grubu</th>
                     <th>Kan Tipi</th>
-                    <th>Talebi Güncelle</th>
-                    <th>Talebi Silme</th>
+                    <th>İşlemler</th>
                 </tr></thead>
                 <tbody>
                 <tr>
+
                     <td>1</td>
                     <td>Emrah</td>
                     <td>Emrem</td>
@@ -39,8 +38,8 @@
 
 
 
-                    <td><button type="submit" data-toggle="modal" class="btn btn-success pull-right" data-target="#guncelle">Güncelle </button></td>
-                    <div class="modal fade" id="guncelle">
+                    <td><button type="button" rel="tooltip" title="" class="btn btn-success btn-simple btn-xs" data-original-title="Güncelle" data-toggle="modal" class="btn btn-success pull-right" data-target="#guncelle" ><i class="material-icons">edit</i> </button>
+                        <div class="modal fade" id="guncelle">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -108,9 +107,9 @@
                     </div>
 
 
-                    <td><button type="submit" class="btn btn-danger pull-right" data-toggle="modal" data-target="#silme" >Sil</button></td>
+                        <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs" data-original-title="Remove" data-toggle="modal" data-target="#silme" data-original-title="Silme" ><i class="material-icons">close</i></button>
 
-                    <div class="modal fade" id="silme">
+                        <div class="modal fade" id="silme">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -134,6 +133,8 @@
 
                 </tbody>
             </table>
+            </div>
+            </div>
         </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 @extends('main_template')
 
 @section('title')
-    Blood Friend
+
 @endsection
 @section('content')
     @if (session('status'))

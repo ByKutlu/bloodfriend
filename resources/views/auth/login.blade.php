@@ -13,7 +13,7 @@
 
                     <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
                         <input class="input100" type="text" name="email" value="{{ old('email') }}">
-                        <span class="focus-input100" data-placeholder="Email"></span>
+                        <span class="focus-input100" data-placeholder="Email giriniz"></span>
                     </div>
 
 
@@ -22,11 +22,11 @@
 							<i class="zmdi zmdi-eye"></i>
 						</span>
                         <input class="input100" type="password" name="password">
-                        <span class="focus-input100" data-placeholder="Password"></span>
+                        <span class="focus-input100" data-placeholder="Şifrenizi giriniz"></span>
                     </div>
 
                         <div class="checkbox" style="font-size: 15px;">
-                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Beni Hatırla
                         </div>
 
                     @if ($errors->has('password') || $errors->has('email'))
@@ -34,7 +34,7 @@
                                         <strong>Email veya şifre bilgileri hatalı!!</strong>
                                     </div>
                     @endif
-
+                    <br/>
                     <div class="container-login100-form-btn">
                         <div class="wrap-login100-form-btn">
                             <div class="login100-form-bgbtn"></div>

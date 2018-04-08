@@ -22,7 +22,7 @@
 </h4><br>
                     <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
                         <input class="input100" type="text" name="email" value="{{ old('email') }}">
-                        <span class="focus-input100" data-placeholder="Email"></span>
+                        <span class="focus-input100" data-placeholder="Email Giriniz"></span>
                     </div>
                     <br />
 

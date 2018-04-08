@@ -6,6 +6,7 @@ use App\City;
 use App\UserType;
 use App\Institution;
 use Illuminate\Http\Request;
+use App\Http\Controllers\FunctionController;
 //use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
@@ -20,7 +21,8 @@ class EmployeeController extends Controller
         $employees = Employee::all();
         $institutions = Institution::all();
         $cities=City::all();
-        return view('calisan')->with('cities',$cities)->with('persons',$persons)->with('employees',$employees)->with('institutions',$institutions);
+        $isActive = FunctionController::getIsActiveOfMenu("calisan");
+        return view('calisan')->with('isActive',$isActive)->with('cities',$cities)->with('persons',$persons)->with('employees',$employees)->with('institutions',$institutions);
     }
 
 

@@ -19,8 +19,6 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 
-
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
@@ -41,55 +39,73 @@
         </div>
         <div class="sidebar-wrapper" data-color="red">
         <ul class="nav">
-                <li class="active">
+            @if(session()->get('user_type')=="employee")
+                <li class="{{$isActive["home"]}}">
                     <a href="{{url("")}}" id="home">
                         <i class="material-icons">home</i>
                         <p>Ana Sayfa</p>
                     </a>
                 </li >
-                <li class="">
+                <li class="{{$isActive["kantalebi"]}}">
                     <a href="{{url("kantalebi")}}" id="kantalebi">
                         <i class="material-icons">favorite</i>
                         <p>Kan Talebi</p>
                     </a>
                 </li>
-                <li>
+                <li class="{{$isActive["kantalebilistesi"]}}">
                     <a href="{{url("kantalebilistesi")}}" id="kantalebilistesi">
                     <i class="material-icons">assignment</i>
                         <p>Kan Talep Listesi</p>
                     </a>
                 </li>
-                <li >
+                @if(session()->get('employee_role')=="manager")
+                <li class="{{$isActive["calisan"]}}">
                     <a href="{{url("calisan")}}" id="calisan">
                         <i class="material-icons">person</i>
                         <p>Çalışanlar</p>
                     </a>
                 </li>
-                <li>
+                @endif
+            @endif
+            @if(session()->get('user_type')=="admin")
+                <li class="{{$isActive["kurum"]}}">
                     <a href="{{url("kurum")}}" id="kurum">
                     <i class="material-icons">account_balance</i>
                         <p>Kurumlar</p>
                     </a>
                 </li>
-                <li>
+                <li class="{{$isActive["calisan"]}}">
+                    <a href="{{url("calisan")}}" id="calisan">
+                        <i class="material-icons">person</i>
+                        <p>Çalışanlar</p>
+                    </a>
+                </li>
+            @endif
+                <li class="{{$isActive["hakkimizda"]}}">
                     <a href="{{url("hakkimizda")}}" id="hakkimizda">
                     <i class="material-icons">new_releases</i>
                         <p>Hakkımızda</p>
                     </a>
                 </li>
-                <li>
+                <li class="{{$isActive["ayarlar"]}}">
                     <a href="{{url("ayarlar")}}" id="ayarlar">
                         <i class="material-icons">settings</i>
                         <p>Ayarlar</p>
                     </a>
                 </li>
 
+            @if(session()->get('yetki')=="pro")
                 <li class="active-pro">
-                    <a href="upgrade.html">
+                    <a href="{{url("change_usertype")}}">
                         <i class="material-icons">unarchive</i>
-                        <p>Upgrade to PRO</p>
+                        @if(session()->get('user_type')=="admin")
+                        <p>Çalışan Moduna Geç</p>
+                        @else
+                        <p>Admin Moduna Geç</p>
+                        @endif
                     </a>
                 </li>
+            @endif
             </ul>
 
 
@@ -182,15 +198,11 @@
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{asset('material/js/demo.js')}}"></script>
 
-
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
-
-
-
 
 @yield("javascript")
 </html>

@@ -15,7 +15,7 @@
 Route::get('/', 'HomeController@index')->name('home');
 
 //KURUM FONKSIYONLARI
-Route::get('/kurum', 'InstitutionController@showPage');
+Route::get('/kurum', 'InstitutionController@showPage')->name('instution');
 Route::post('/addInstitution','InstitutionController@addInstitution');
 Route::post('/updateInstitution','InstitutionController@updateInstitution');
 Route::post('/deleteInstitution','InstitutionController@deleteInstitution');
@@ -37,4 +37,7 @@ Route::get('/getTowns/{city_id}','AddressController@getTowns');
 
 //AUTHENTICATION
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
+
+//CHANGE USERTYPE
+Route::get('/change_usertype', 'FunctionController@changeUserType');

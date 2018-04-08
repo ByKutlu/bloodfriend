@@ -20,11 +20,13 @@ class BloodRequestController extends Controller
     }
 
     public function kantalebi(){
-        return view('kantalebi');
+        $isActive = FunctionController::getIsActiveOfMenu("kantalebi");
+        return view('kantalebi')->with('isActive',$isActive);
     }
 
     public function kantalebilistesi(){
-        return view('kantalebilistesi');
+        $isActive = FunctionController::getIsActiveOfMenu("kantalebilistesi");
+        return view('kantalebilistesi')->with('isActive',$isActive);
     }
 
     public function addBloodRequest(Request $request)

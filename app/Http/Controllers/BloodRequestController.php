@@ -18,6 +18,15 @@ class BloodRequestController extends Controller
     {
         $this->middleware('auth');
     }
+
+    public function kantalebi(){
+        return view('kantalebi');
+    }
+
+    public function kantalebilistesi(){
+        return view('kantalebilistesi');
+    }
+
     public function addBloodRequest(Request $request)
     {
         $bloodRequest = new BloodRequest();
@@ -31,11 +40,13 @@ class BloodRequestController extends Controller
         $bloodRequest->employee_id = $request->employee_id;
         $bloodRequest->save();
     }
+
     public function deleteBloodRequest(Request $request)
     {
         $bloodRequest = Institution::find($request->blood_request_id);
         $bloodRequest->delete();
     }
+
     public function makeInactive(Request $request)
     {
         $bloodRequest = Institution::find($request->blood_request_id);

@@ -26,7 +26,7 @@ class User extends Authenticatable
     }
 
     public function roles(){
-        return $this->hasMany('App\UserRole', 'user_id', 'user_id');
+        return $this->hasMany('App\UserType', 'user_id', 'user_id');
     }
 
     public function employee(){
@@ -53,7 +53,7 @@ class User extends Authenticatable
 
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password'
     ];
 
     /**

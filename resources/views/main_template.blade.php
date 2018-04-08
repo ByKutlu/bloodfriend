@@ -83,12 +83,22 @@
                         <p>Ayarlar</p>
                     </a>
                 </li>
+<<<<<<< HEAD
                <!-- <li class="active-pro">
                     <a href="">
                        <p>&copy;  2018 Blood Friend</p>
                     </a>
                 </li>
                 -->
+=======
+
+                <li class="active-pro">
+                    <a href="upgrade.html">
+                        <i class="material-icons">unarchive</i>
+                        <p>Upgrade to PRO</p>
+                    </a>
+                </li>
+>>>>>>> origin/master
             </ul>
 
 

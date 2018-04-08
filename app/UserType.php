@@ -2,10 +2,10 @@
 namespace App;
 use Illuminate\Database\Eloquent\Model;
 
-class UserRole extends Model{
-    protected $table = 'user_role';
+class UserType extends Model{
+    protected $table = 'user_type';
     public $timestamps = false;
-    protected $primaryKey = 'user_role_id';
+    protected $primaryKey = 'user_type_id';
 
     public function user(){
         return $this->belongsTo('App\User','user_id','user_id');

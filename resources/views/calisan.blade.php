@@ -142,8 +142,7 @@
                     <th>Kan Grubu</th>
                     <th>Telefon</th>
                     <th>İşlemler</th>
-                    <th>Güncelle İşlemi</th>
-                    <th>Silme İşlemi</th>
+
 
                 </tr></thead>
                 <tbody>
@@ -156,7 +155,7 @@
                     <td>05545552211</td>
                     <td>
 
-                        <button type="submit" data-toggle="modal" data-target="#detaylı" class="btn btn-info pull-right">Detaylı </button></td>
+                        <button  data-toggle="modal" rel="tooltip" data-target="#detaylı" class="btn btn-info btn-simple btn-xs"><i class="material-icons">description</i> </button>
                     <div class="modal fade bd-example-modal-lg" id="detaylı" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
@@ -251,7 +250,7 @@
                     </div>
 
 
-                    <td><button type="submit" data-toggle="modal" class="btn btn-success pull-right" data-target="#guncelle">Güncelle </button></td>
+                    <button  data-toggle="modal" rel="tooltip" class="btn btn-success btn-simple btn-xs" data-target="#guncelle"><i class="material-icons">edit</i> </button>
                     <div class="modal fade bd-example-modal-lg" id="guncelle" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
@@ -354,8 +353,8 @@
 
                     </div>
 
-
-                    <td><button type="submit" class="btn btn-danger pull-right"  name="user_id" data-toggle="modal" data-target="#silme" >Sil</button></td>
+                     
+                    <button  class="btn btn-danger btn-simple btn-xs" rel="tooltip"  name="user_id" data-toggle="modal" data-target="#silme" ><i class="material-icons">delete</button></td>
 
                     <div class="modal fade" id="silme">
                         <div class="modal-dialog" role="document">

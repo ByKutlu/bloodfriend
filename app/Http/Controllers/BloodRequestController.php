@@ -37,9 +37,10 @@ class BloodRequestController extends Controller
         $bloodRequest->blood_group = $request->blood_group;
         $bloodRequest->date = $request->date;
         $bloodRequest->institution_id = $request->institution_id;
-        $bloodRequest->isActive = 1;
+        $bloodRequest->is_active = $request->is_active;
         $bloodRequest->unit_number = $request->unit_number;
         $bloodRequest->employee_id = $request->employee_id;
+        $bloodRequest->user_id = $request->user_id;
         $bloodRequest->save();
     }
 

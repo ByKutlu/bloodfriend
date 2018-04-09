@@ -49,6 +49,11 @@ class LoginController extends Controller
         $yetki = "donor";
         $userType = "donor";
         $userTypes = DB::table('user_type')->select('type')->where('user_id',$user->user_id)->get();
+        $employee =  DB::table('employee')->select('employee_id','institution_id')->where('user_id',$user->user_id)->get()[0];
+        $request ->session()->put('employee_id',$employee->employee_id);
+        $request ->session()->put('institution_id',$employee->institution_id);
+        $institution = DB::table('institution')->select('town_id')->where('institution_id',$employee->institution_id)->get()[0];
+        $request ->session()->put('townIdOfInstitution',$institution->town_id);
         $count = 0;
         foreach($userTypes as $userTypee){
             if($userTypee->type == "employee"){

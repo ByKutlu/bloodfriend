@@ -17,6 +17,10 @@ class FunctionController extends Controller
         $isActive["hakkimizda"]=" ";
         $isActive["ayarlar"]=" ";
         $isActive[$whichMenuActive]="active";
+        $isActive["employee_id"]=session()->get('employee_id');
+        $isActive["institution_id"]=session()->get('institution_id');
+        $isActive["townIdOfInstitution"]=session()->get('townIdOfInstitution');
+        $isActive["user_id"]=session()->get('user_id');
         return $isActive;
     }
 

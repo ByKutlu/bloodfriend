@@ -30,6 +30,7 @@ Route::get('/ayarlar', 'HomeController@ayarlar');
 //BLOOD REQUEST
 Route::get('/kantalebi','BloodRequestController@kantalebi');
 Route::get('/kantalebilistesi','BloodRequestController@kantalebilistesi');
+Route::post('/addBloodRequest','BloodRequestController@addBloodRequest');
 
 //ADRESS
 Route::get('/getCities','AddressController@getCities');

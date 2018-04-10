@@ -17,7 +17,6 @@ class EmployeeController extends Controller
     }
 
     public function showPage(){
-
         if(session()->get('user_type')=="employee" && session()->get('employee_role')=="manager"){
             $user = User::find(session()->get('user_id'));
             $institution = $user->employee->institution;
@@ -27,12 +26,11 @@ class EmployeeController extends Controller
             return view('calisan_kurum_yoneticisi')->with('isActive',$isActive)->with('cities',$cities)->with('employees',$employees)->with('institution',$institution);
         }
         elseif(session()->get('user_type')=="admin"){
-            $persons = User::all();
-            $employees = Employee::all();
+            $employees = Employee::where("role","manager")->get();
             $institutions = Institution::all();
             $cities=City::all();
             $isActive = FunctionController::getIsActiveOfMenu("calisan");
-            return view('calisan_sistem_yoneticisi')->with('isActive',$isActive)->with('cities',$cities)->with('persons',$persons)->with('employees',$employees)->with('institutions',$institutions);
+            return view('calisan_sistem_yoneticisi')->with('isActive',$isActive)->with('cities',$cities)->with('employees',$employees)->with('institutions',$institutions);
         }
         else{
             abort(403);
@@ -55,14 +53,21 @@ class EmployeeController extends Controller
 
         $employee = new Employee();
         $employee->user_id = $person->user_id;
-        $employee->institution_id = $r->institution_id;
-        $employee->role = $r->role;
+        if(session()->get('user_type')=="admin"){
+            $employee->institution_id = $r->institution;
+            $employee->role = "manager";
+        }
+        else{
+            $employee->institution_id = session()->get('institution_id');
+            $employee->role = $r->role;
+        }
         $employee->save();
 
         $userType = new UserType();
         $userType->user_id=$person->user_id;
         $userType->type = "employee";
         $userType->save();
+        return redirect()->route('employee');
     }
 
     public function updateEmployee(Request $r){
@@ -70,22 +75,30 @@ class EmployeeController extends Controller
         $person->name = $r->name;
         $person->surname = $r->surname;
         $person->username = $r->username;
-        $person->password = bcrypt($r->password);
+        if($r->password!=""){
+            $person->password = bcrypt($r->password);
+        }
         $person->gender = $r->gender;
         $person->blood_group = $r->blood_group;
         $person->date_of_birth = $r->date_of_birth;
-        $person->email = $r->mail;
+        $person->email = $r->email;
         $person->phone = $r->phone;
         $person->town_id = $r->town_id;
         $person->save();
 
-        $employee = Employee::where("user_id",$person->user_id);
-        $employee->institution_id = $r->institution_id;
-        $employee->role = $r->role;
+        $employee = Employee::where("user_id",$person->user_id)->first();
+        if(session()->get('user_type')=="admin"){
+            $employee->institution_id = $r->institution;
+        }
+        else{
+            $employee->role = $r->role;
+        }
         $employee->save();
+        return redirect()->route('employee');
     }
 
     public function deleteEmployee(Request $r){
         User::find($r->user_id)->delete();
+        return redirect()->route('employee');
     }
 }

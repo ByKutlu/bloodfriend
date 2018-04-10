@@ -21,8 +21,10 @@ Route::post('/updateInstitution','InstitutionController@updateInstitution');
 Route::post('/deleteInstitution','InstitutionController@deleteInstitution');
 
 //Çalışan FONKSIYONLARI
-Route::get('/calisan', 'EmployeeController@showPage');
+Route::get('/calisan', 'EmployeeController@showPage')->name('employee');
 Route::post('/addEmployee','EmployeeController@addEmployee');
+Route::post('/updateEmployee','EmployeeController@updateEmployee');
+Route::post('/deleteEmployee','EmployeeController@deleteEmployee');
 
 Route::get('/hakkimizda', 'HomeController@hakkimizda');
 Route::get('/ayarlar', 'HomeController@ayarlar');

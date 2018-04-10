@@ -17,12 +17,26 @@ class EmployeeController extends Controller
     }
 
     public function showPage(){
-        $persons = User::all();
-        $employees = Employee::all();
-        $institutions = Institution::all();
-        $cities=City::all();
-        $isActive = FunctionController::getIsActiveOfMenu("calisan");
-        return view('calisan')->with('isActive',$isActive)->with('cities',$cities)->with('persons',$persons)->with('employees',$employees)->with('institutions',$institutions);
+
+        if(session()->get('user_type')=="employee" && session()->get('employee_role')=="manager"){
+            $user = User::find(session()->get('user_id'));
+            $institution = $user->employee->institution;
+            $employees=$institution->employees;
+            $cities=City::all();
+            $isActive = FunctionController::getIsActiveOfMenu("calisan");
+            return view('calisan_kurum_yoneticisi')->with('isActive',$isActive)->with('cities',$cities)->with('employees',$employees)->with('institution',$institution);
+        }
+        elseif(session()->get('user_type')=="admin"){
+            $persons = User::all();
+            $employees = Employee::all();
+            $institutions = Institution::all();
+            $cities=City::all();
+            $isActive = FunctionController::getIsActiveOfMenu("calisan");
+            return view('calisan_sistem_yoneticisi')->with('isActive',$isActive)->with('cities',$cities)->with('persons',$persons)->with('employees',$employees)->with('institutions',$institutions);
+        }
+        else{
+            abort(403);
+        }
     }
 
     public function addEmployee(Request $r){

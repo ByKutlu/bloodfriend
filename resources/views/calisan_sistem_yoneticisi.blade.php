@@ -21,10 +21,6 @@
             </div>
             <div class="card-content table-responsive">
                 <div class="card-content">
-
-
-
-
                     <div class="modal fade bd-example-modal-lg" id ="ekle" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
@@ -37,8 +33,6 @@
                                     <div class="card-header" data-background-color="red">
                                         <h5 class="modal-title" id="exampleModalLabel">Çalışan Ekle</h5>
                                     </div>
-
-
                                 </div>
                                 <div class="modal-body">
                                     <form method="POST">
@@ -129,7 +123,6 @@
                         </div>
 
                     </div>
-                </div>
 
 
             <table class="table">
@@ -354,7 +347,7 @@
                     </div>
 
                      
-                    <button  class="btn btn-danger btn-simple btn-xs" rel="tooltip"  name="user_id" data-toggle="modal" data-target="#silme" ><i class="material-icons">delete</button></td>
+                        <button  class="btn btn-danger btn-simple btn-xs" rel="tooltip"  name="user_id" data-toggle="modal" data-target="#silme" ><i class="material-icons">delete</i></button></td>
 
                     <div class="modal fade" id="silme">
                         <div class="modal-dialog" role="document">
@@ -383,6 +376,7 @@
                 </tbody>
             </table>
 
+                </div>
         </div>
     </div>
     </div>

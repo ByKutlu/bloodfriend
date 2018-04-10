@@ -25,8 +25,13 @@ class BloodRequestController extends Controller
     }
 
     public function kantalebilistesi(){
+        $bloodRequests = BloodRequest::all();
         $isActive = FunctionController::getIsActiveOfMenu("kantalebilistesi");
-        return view('kantalebilistesi')->with('isActive',$isActive);
+        return view('kantalebilistesi')->with('isActive',$isActive)->with('bloodRequests',$bloodRequests);
+    }
+
+    public function getBloodRequests($institution_id){
+        return response()->json(BloodRequest::where("institution_id",$institution_id)->get());
     }
 
     public function addBloodRequest(Request $request)
@@ -46,13 +51,13 @@ class BloodRequestController extends Controller
 
     public function deleteBloodRequest(Request $request)
     {
-        $bloodRequest = Institution::find($request->blood_request_id);
+        $bloodRequest = BloodRequest::find($request->blood_request_id);
         $bloodRequest->delete();
     }
 
     public function makeInactive(Request $request)
     {
-        $bloodRequest = Institution::find($request->blood_request_id);
+        $bloodRequest = BloodRequest::find($request->blood_request_id);
         $bloodRequest->isActive = 0;
         $bloodRequest->save();
     }

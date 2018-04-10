@@ -31,6 +31,8 @@ Route::get('/ayarlar', 'HomeController@ayarlar');
 Route::get('/kantalebi','BloodRequestController@kantalebi');
 Route::get('/kantalebilistesi','BloodRequestController@kantalebilistesi');
 Route::post('/addBloodRequest','BloodRequestController@addBloodRequest');
+Route::post('/deleteBloodRequest','BloodRequestController@deleteBloodRequest');
+Route::get('/getBloodRequests/{institution_id}','InstituionController@getBloodRequests');
 
 //ADRESS
 Route::get('/getCities','AddressController@getCities');

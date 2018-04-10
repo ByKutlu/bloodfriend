@@ -83,7 +83,6 @@
             var town_id = $("#town_id").val();
             var blood_type = $("#blood_type").val();
             var blood_group =$("#blood_group").val();
-            alert(town_id);
             var institution_id = $("#institution_id").val();
             var is_active = 1;
             var employee_id = $("#employee_id").val();

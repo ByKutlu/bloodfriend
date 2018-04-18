@@ -34,6 +34,8 @@ Route::get('/kantalebi','BloodRequestController@kantalebi');
 Route::get('/kantalebilistesi','BloodRequestController@kantalebilistesi');
 Route::post('/addBloodRequest','BloodRequestController@addBloodRequest');
 Route::post('/deleteBloodRequest','BloodRequestController@deleteBloodRequest');
+Route::post('/updateBloodRequest','BloodRequestController@updateBloodRequest');
+Route::post('/makeInactiveBloodRequest','BloodRequestController@makeInactiveBloodRequest');
 Route::get('/getBloodRequests/{institution_id}','InstituionController@getBloodRequests');
 
 //ADRESS

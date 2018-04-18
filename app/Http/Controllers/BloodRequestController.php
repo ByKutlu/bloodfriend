@@ -54,11 +54,24 @@ class BloodRequestController extends Controller
         $bloodRequest = BloodRequest::find($request->blood_request_id);
         $bloodRequest->delete();
     }
+    public function updateBloodRequest(Request $request){
+        $bloodRequest = BloodRequest::find($request->blood_request_id);
+        $bloodRequest->town_id = $request->town_id;
+        $bloodRequest->blood_type = $request->blood_type;
+        $bloodRequest->blood_group = $request->blood_group;
+        $bloodRequest->date = $request->date;
+        $bloodRequest->institution_id = $request->institution_id;
+        $bloodRequest->is_active = $request->is_active;
+        $bloodRequest->unit_number = $request->unit_number;
+        $bloodRequest->employee_id = $request->employee_id;
+        $bloodRequest->user_id = $request->user_id;
+        $bloodRequest->save();
+    }
 
-    public function makeInactive(Request $request)
+    public function makeInactiveBloodRequest(Request $request)
     {
         $bloodRequest = BloodRequest::find($request->blood_request_id);
-        $bloodRequest->isActive = 0;
+        $bloodRequest->is_active = 0;
         $bloodRequest->save();
     }
 }

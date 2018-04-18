@@ -64,7 +64,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="recipient-name" class="form-control-label">Kan Ünite Sayısı</label>
-                                                    <input type="text"name="username" class="form-control" id="recipient-name" value="{{$bloodRequest->unit_number}}">
+                                                    <input type="number"name="unit_number" class="form-control" id="unit_number_{{$bloodRequest->blood_request_id}}" value="{{$bloodRequest->unit_number}}">
                                                 </div>
                                             </div >
                                             <div class="col-lg-6 col-md-12">
@@ -91,16 +91,24 @@
                                                 </div>
                                                 <input type="hidden" id="blood_group_{{$bloodRequest->blood_request_id}}" value="{{$bloodRequest->blood_group}}">
                                                 <input type="hidden" id="blood_type_{{$bloodRequest->blood_request_id}}" value="{{$bloodRequest->blood_type}}">
+
                                             </div >
                                         </form>
                                     </div>
                                     <div class="modal-footer">
                                         <div class=" col-md-12">
+                                            @if($bloodRequest->is_active==1)
+                                                <button type="button" class="btn btn-warning blood_request_make_inactive" name="{{$bloodRequest->blood_request_id}}">Talebi Kapat</button>
+                                            @endif
                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Vazgeç</button>
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}" id="_token">
                                             <button type="button" class="btn btn-success blood_request_update" name="{{$bloodRequest->blood_request_id}}">Güncelle</button>
                                         </div>
                                     </div>
+                                    <input type="hidden" id="employee_id" value="{{$isActive["employee_id"]}}">
+                                    <input type="hidden" id="institution_id" value="{{$isActive["institution_id"]}}">
+                                    <input type="hidden" id="user_id" value="{{$isActive["user_id"]}}">
+                                    <input type="hidden" id="town_id" value="{{$isActive["townIdOfInstitution"]}}">
 
                                 </div>
                             </div>
@@ -183,8 +191,76 @@
     });
 
     $(".blood_request_update").click(function(e) {
+        var bloodRequestId = this.name;
+        var town_id = $("#town_id").val();
+        var bloodType = $("#select_blood_type_"+bloodRequestId).val();
+        var bloodGroup = $("#select_blood_group_"+bloodRequestId).val();
+        var institution_id = $("#institution_id").val();
+        var isActive = 1;
+        var unit_number = $("#unit_number_"+bloodRequestId).val();
+        var employee_id = $("#employee_id").val();
+        var user_id = $("#user_id").val();
+
+        var d = new Date();
+        var month = d.getMonth()+1;
+        var day = d.getDate();
+        var date = d.getFullYear() + '-' +
+            (month<10 ? '0' : '') + month + '-' +
+            (day<10 ? '0' : '') + day;
+
+        var token = $("#_token").val();
+        $.ajax({
+            type: "POST",
+            url: "{{url('updateBloodRequest')}}",
+            data	:  {
+                "blood_request_id":bloodRequestId,
+                "town_id":town_id,
+                "blood_type":bloodType,
+                "blood_group":bloodGroup,
+                "date":date,
+                "institution_id":institution_id,
+                "is_active":isActive,
+                "unit_number":unit_number,
+                "employee_id":employee_id,
+                "user_id":user_id,
+                "_token" : token
+            },
+
+            success: function(msg) {
+                console.log(reply);
+
+            },
+            async: false,
+            error: function() {
+                alert("Güncelleme İşlemi Başarısız!!!");
+            }
+        });
+        location.reload();
 
 
+
+    });
+    $(".blood_request_make_inactive").click(function(e) {
+        var blood_request_id = this.name;
+        var token = $("#_token").val();
+        $.ajax({
+            type: "POST",
+            url: "{{url('makeInactiveBloodRequest')}}",
+            data	:  {
+                "blood_request_id":blood_request_id,
+                "_token" : token
+            },
+
+            success: function(msg) {
+                console.log(reply);
+
+            },
+            async: false,
+            error: function() {
+                alert("Kan Talebi Kapatma İşlemi Başarısız!!!");
+            }
+        });
+        location.reload();
     });
 
 </script>

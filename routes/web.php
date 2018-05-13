@@ -39,8 +39,8 @@ Route::post('/makeInactiveBloodRequest','BloodRequestController@makeInactiveBloo
 Route::get('/getBloodRequests/{institution_id}','InstituionController@getBloodRequests');
 
 //DONOR
-Route::post('/addDonor','DonorController@addDonor');
-Route::get('/addDonor','DonorController@addDonor');
+Route::post('/addDonor','DonorController@addDonor')->name('addDonor');
+Route::post('/loginDonor','DonorController@loginDonor')->name('loginDonor');
 
 //ADRESS
 Route::get('/getCities','AddressController@getCities');

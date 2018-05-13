@@ -39,4 +39,9 @@ class DonorController extends Controller
         $person->town_id =  $request->get("town_id");*/
         $person->save();
     }
+
+    public function loginDonor(Request $request){
+        //
+    }
+
 }

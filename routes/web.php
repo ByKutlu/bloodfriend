@@ -38,6 +38,10 @@ Route::post('/updateBloodRequest','BloodRequestController@updateBloodRequest');
 Route::post('/makeInactiveBloodRequest','BloodRequestController@makeInactiveBloodRequest');
 Route::get('/getBloodRequests/{institution_id}','InstituionController@getBloodRequests');
 
+//DONOR
+Route::post('/addDonor','DonorController@addDonor');
+Route::get('/addDonor','DonorController@addDonor');
+
 //ADRESS
 Route::get('/getCities','AddressController@getCities');
 Route::get('/getTowns/{city_id}','AddressController@getTowns');
@@ -48,3 +52,6 @@ Route::get('/home', 'HomeController@index');
 
 //CHANGE USERTYPE
 Route::get('/change_usertype', 'FunctionController@changeUserType');
+
+
+Route::get('/getToken', 'FunctionController@getToken');

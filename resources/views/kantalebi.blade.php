@@ -58,6 +58,7 @@
                             <input type="hidden" id="town_id" value="{{$isActive["townIdOfInstitution"]}}">
                          <input type="hidden" id = "_token" name="_token" value="{{ csrf_token() }}">
                             <button type="submit" id="requestButton"class="btn btn-info pull-right">Kan Talep Et</button>
+                            <button type="button" id="sendNotification" style="display: none"></button>
                              <div class="clearfix"></div>
                       </form>
 
@@ -114,7 +115,7 @@
                 },
 
                 success: function(msg) {
-                    console.log(reply);
+                    console.log(msg);
 
                 },
                 async: false,
@@ -122,8 +123,38 @@
                     alert("Kan Talebi Gerçekleştirilemedi!!!");
                 }
             });
+            $('#sendNotification').click();
             }
         );
+        $("#sendNotification").click(function(e) {
+                //var town_id = $("#town_id").val();
+                var town_name = "news";
+                $.ajax({
+                    type : 'POST',
+                    url : "https://fcm.googleapis.com/fcm/send",
+                    headers : {
+                        Authorization : 'key=AAAAJ3sUI6w:APA91bESa-UinRxItfbcH_dtM4qR8lcGCn26HI5xp4BWhuNQTh2h6j4y4wyU4QhNh2SmzEJzk1-hx6ynd9VSQgVHP6gEDyAZFGdffba44YAKwUllR7Agzywf9Vh-RH_b_WOyS9VtM4uE'
+                    },
+                    contentType : 'application/json',
+                    data : JSON.stringify({
+                        "to": "/topics/"+town_name,
+                        "notification" : {
+                            "body" : "This is a Firebase Cloud Messaging Topic Message!",
+                            "sound" : "default",
+                            "title" : "FCM Message"
+                        }
+
+                    }),
+                    success : function(response) {
+                        console.log(response);
+                    },
+                    error : function(xhr, status, error) {
+                        console.log(xhr.error);
+                    }
+                });
+            }
+        );
+
     </script>
 
 @endsection

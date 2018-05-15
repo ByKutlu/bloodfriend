@@ -18,7 +18,7 @@
                             <div class="col-md-6">
                                 <div class="form-group label-floating">
                                      <label class="control-label">Kaç ünite talep ediyorsun ?</label>
-                                      <input type="text" name="unit_number" class="form-control" id="unit_num">
+                                      <input type="number" name="unit_number" class="form-control" id="unit_num">
                                  </div>
                              </div>
                          </div>
@@ -127,8 +127,8 @@
             }
         );
         $("#sendNotification").click(function(e) {
+                var conditionString = "'0RHPozitif' in topics && ('500' in topics || '501' in topics)";
                 //var town_id = $("#town_id").val();
-                var town_name = "news";
                 $.ajax({
                     type : 'POST',
                     url : "https://fcm.googleapis.com/fcm/send",
@@ -137,7 +137,7 @@
                     },
                     contentType : 'application/json',
                     data : JSON.stringify({
-                        "to": "/topics/"+town_name,
+                        "condition": conditionString,
                         "notification" : {
                             "body" : "This is a Firebase Cloud Messaging Topic Message!",
                             "sound" : "default",

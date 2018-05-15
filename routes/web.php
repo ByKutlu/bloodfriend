@@ -50,6 +50,9 @@ Route::get('/getTowns/{city_id}','AddressController@getTowns');
 Auth::routes();
 Route::get('/home', 'HomeController@index');
 
+//FORM QUESTION
+Route::get('/getQuestions','FormQuestionController@getQuestions');
+
 //CHANGE USERTYPE
 Route::get('/change_usertype', 'FunctionController@changeUserType');
 

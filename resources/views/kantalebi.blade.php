@@ -142,6 +142,7 @@
             $("#blood_type").val($(this).text());
     });
 
+    //SAVE BLOOD REQUEST
     $("#requestButton").click(function(e) {
         e.preventDefault();
             var selected_il = $('#secilen_ilceler').val();
@@ -162,10 +163,13 @@
                     (month < 10 ? '0' : '') + month + '-' +
                     (day < 10 ? '0' : '') + day;
 
-                var token = $("#_token").val();
+
                 $.ajax({
                     type: "POST",
                     url: "{{url('addBloodRequest')}}",
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    },
                     data: {
                         "institution_id": institution_id,
                         "blood_type": blood_type,
@@ -175,19 +179,18 @@
                         "employee_id": employee_id,
                         "user_id": user_id,
                         "unit_number": unit_number,
-                        "date": date,
-                        "_token": token
+                        "date": date
                     },
-
                     success: function (msg) {
                         console.log(msg);
                     },
                     async: false,
-                    error: function () {
+                    error: function (e) {
+                        console.log(e);
                         alert("Kan Talebi Gerçekleştirilemedi!!!");
                     }
                 });
-                $('#sendNotification').click();
+                //$('#sendNotification').click();
             }
             else
             {
@@ -195,6 +198,8 @@
             }
         }
     );
+
+    //SEND NOTIFICATION
     $("#sendNotification").click(function(e) {
         var selected_il = $('#secilen_ilceler').val();
         if(selected_il.length>0){
@@ -265,5 +270,6 @@
             alert("Bildirim gönderilmesi için az bir ilçe seçiniz");
         }
     });
+
 </script>
 @endsection

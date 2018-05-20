@@ -33,6 +33,7 @@ Route::get('/ayarlar', 'HomeController@ayarlar');
 Route::get('/kantalebi','BloodRequestController@kantalebi');
 Route::get('/kantalebilistesi','BloodRequestController@kantalebilistesi');
 Route::post('/addBloodRequest','BloodRequestController@addBloodRequest');
+Route::get('/addBloodRequest','BloodRequestController@addBloodRequest');
 Route::post('/deleteBloodRequest','BloodRequestController@deleteBloodRequest');
 Route::post('/updateBloodRequest','BloodRequestController@updateBloodRequest');
 Route::post('/makeInactiveBloodRequest','BloodRequestController@makeInactiveBloodRequest');

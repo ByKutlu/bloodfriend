@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\BloodRequest;
+use App\BloodRequestTown;
 use App\Town;
 use App\City;
 use App\Institution;
@@ -43,7 +44,6 @@ class BloodRequestController extends Controller
     public function addBloodRequest(Request $request)
     {
         $bloodRequest = new BloodRequest();
-        $bloodRequest->town_id = $request->town_id;
         $bloodRequest->blood_type = $request->blood_type;
         $bloodRequest->blood_group = $request->blood_group;
         $bloodRequest->date = $request->date;
@@ -54,8 +54,11 @@ class BloodRequestController extends Controller
         $bloodRequest->user_id = $request->user_id;
         $bloodRequest->save();
 
-        foreach ($request->towns as $town){
-            
+       foreach ($request->towns as $town){
+            $bloodRequestTown = new BloodRequestTown();
+            $bloodRequestTown->town_id = $town;
+            $bloodRequestTown->blood_request_id = $bloodRequest->blood_request_id;
+            $bloodRequestTown->save();
         }
     }
 

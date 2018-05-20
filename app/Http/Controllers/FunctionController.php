@@ -47,4 +47,7 @@ class FunctionController extends Controller
     public function getToken(){
         return csrf_token();
     }
+    public function getSession(){
+        dd(session()->all());
+    }
 }

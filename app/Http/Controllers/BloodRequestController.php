@@ -9,6 +9,8 @@
 namespace App\Http\Controllers;
 
 use App\BloodRequest;
+use App\Town;
+use App\City;
 use App\Institution;
 use Illuminate\Http\Request;
 
@@ -20,8 +22,12 @@ class BloodRequestController extends Controller
     }
 
     public function kantalebi(){
+        $cities=City::all();
+        $townOfInstitution=Town::find(session()->get('townIdOfInstitution'));
+        $cityOfInstitution=$townOfInstitution->city;
         $isActive = FunctionController::getIsActiveOfMenu("kantalebi");
-        return view('kantalebi')->with('isActive',$isActive);
+        return view('kantalebi')->with('isActive',$isActive)->with('townOfInstitution',$townOfInstitution)
+            ->with('cityOfInstitution',$cityOfInstitution)->with('cities',$cities);
     }
 
     public function kantalebilistesi(){
@@ -47,6 +53,10 @@ class BloodRequestController extends Controller
         $bloodRequest->employee_id = $request->employee_id;
         $bloodRequest->user_id = $request->user_id;
         $bloodRequest->save();
+
+        foreach ($request->towns as $town){
+            
+        }
     }
 
     public function deleteBloodRequest(Request $request)

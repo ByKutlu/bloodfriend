@@ -56,5 +56,6 @@ Route::get('/getQuestions','FormQuestionController@getQuestions');
 //CHANGE USERTYPE
 Route::get('/change_usertype', 'FunctionController@changeUserType');
 
-
+//FUNCTIONS
 Route::get('/getToken', 'FunctionController@getToken');
+Route::get('/getSession', 'FunctionController@getSession');

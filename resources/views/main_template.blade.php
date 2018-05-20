@@ -34,7 +34,7 @@
         <div class="logo">
             <a href="" class="simple-text">
                 Kan 
-        <img src="material/img/logo.png" width=30/> Dostum
+        <img src="{{asset("material/img/logo.png")}}" width=30/> Dostum
             </a>
         </div>
         <div class="sidebar-wrapper" data-color="red">

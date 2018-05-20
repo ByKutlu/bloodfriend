@@ -14,10 +14,6 @@ class Donor extends Model
         return $this->belongsTo('App\User', 'user_id', 'user_id');
     }
 
-    public function BloodRequestReplies(){
-        return $this->hasMany('App\BloodRequestReply', 'donor_id', 'donor_id');
-    }
-
     public function FormReplies(){
         return $this->hasMany('App\FormReply', 'donor_id', 'donor_id');
     }

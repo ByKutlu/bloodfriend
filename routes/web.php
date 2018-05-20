@@ -32,8 +32,8 @@ Route::get('/ayarlar', 'HomeController@ayarlar');
 //BLOOD REQUEST
 Route::get('/kantalebi','BloodRequestController@kantalebi');
 Route::get('/kantalebilistesi','BloodRequestController@kantalebilistesi');
+Route::get('/kantalebi_incele/{id}','BloodRequestController@kantalebi_incele');
 Route::post('/addBloodRequest','BloodRequestController@addBloodRequest');
-Route::get('/addBloodRequest','BloodRequestController@addBloodRequest');
 Route::post('/deleteBloodRequest','BloodRequestController@deleteBloodRequest');
 Route::post('/updateBloodRequest','BloodRequestController@updateBloodRequest');
 Route::post('/makeInactiveBloodRequest','BloodRequestController@makeInactiveBloodRequest');
@@ -60,3 +60,4 @@ Route::get('/change_usertype', 'FunctionController@changeUserType');
 //FUNCTIONS
 Route::get('/getToken', 'FunctionController@getToken');
 Route::get('/getSession', 'FunctionController@getSession');
+Route::get('/flushSession', 'FunctionController@flushSession');

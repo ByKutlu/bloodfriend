@@ -19,3 +19,4 @@ class BloodRequestTown extends Model
         return $this->belongsTo('App\BloodRequest', 'blood_request_id', 'blood_request_id');
     }
 }
+?>

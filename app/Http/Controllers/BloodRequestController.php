@@ -37,6 +37,12 @@ class BloodRequestController extends Controller
         return view('kantalebilistesi')->with('isActive',$isActive)->with('bloodRequests',$bloodRequests);
     }
 
+    public function kantalebi_incele($id){
+        $bloodRequest = BloodRequest::find($id);
+        $isActive = FunctionController::getIsActiveOfMenu("kantalebilistesi");
+        return view('kantalebi_incele')->with('isActive',$isActive)->with('bloodRequest',$bloodRequest);
+    }
+
     public function getBloodRequests($institution_id){
         return response()->json(BloodRequest::where("institution_id",$institution_id)->get());
     }

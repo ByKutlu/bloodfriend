@@ -50,4 +50,7 @@ class FunctionController extends Controller
     public function getSession(){
         dd(session()->all());
     }
+    public function flushSession(){
+        dd(session()->flush());
+    }
 }

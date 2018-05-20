@@ -35,9 +35,6 @@ class User extends Authenticatable
     public function donors(){
         return $this->hasMany('App\Donor','user_id','user_id');
     }
-    public function bloodRequestReplies(){
-        return $this->hasMany('App\BloodRequestReply','user_id','user_id');
-    }
 
     public function bloodRequests(){
         return $this->hasMany('App\BloodRequest','user_id','user_id');

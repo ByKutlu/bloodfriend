@@ -21,6 +21,7 @@
                         <th>Ünite Sayısı</th>
                         <th>İşlemler</th>
                         <th>Durum</th>
+                        <th>Talebi İncele</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -129,6 +130,7 @@
                             Kapatıldı
                         @endif
                     </td>
+                    <td><a href="{{url('kantalebi_incele/'.$bloodRequest->blood_request_id)}}" >Talebi İncele</a></td>
                 </tr>
                 @endif
                     @endforeach

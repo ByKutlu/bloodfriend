@@ -190,7 +190,7 @@
                         alert("Kan Talebi Gerçekleştirilemedi!!!");
                     }
                 });
-                //$('#sendNotification').click();
+                $('#sendNotification').click();
             }
             else
             {

@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AcceptedRequest;
 use App\BloodRequest;
 use App\BloodRequestTown;
 use App\Town;
@@ -39,8 +40,10 @@ class BloodRequestController extends Controller
 
     public function kantalebi_incele($id){
         $bloodRequest = BloodRequest::find($id);
+        $acceptedRequests = AcceptedRequest::where('blood_request_id',$bloodRequest->blood_request_id);
         $isActive = FunctionController::getIsActiveOfMenu("kantalebilistesi");
-        return view('kantalebi_incele')->with('isActive',$isActive)->with('bloodRequest',$bloodRequest);
+        return view('kantalebi_incele')->with('isActive',$isActive)->with('bloodRequest',$bloodRequest)
+            ->with('acceptedRequests',$acceptedRequests);
     }
 
     public function getBloodRequests($institution_id){

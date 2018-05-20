@@ -64,15 +64,31 @@
                                     <th>Adı Soyadı</th>
                                     <th>Cinsiyet</th>
                                     <th>Telefon</th>
-                                    <th>İşlemler</th>
+                                    <th>Konum</th>
+                                    <th>Katıldı mı?</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            @foreach($acceptedRequests as $acceptedRequest)
+                                <?php $acceptedDonor = $acceptedRequest->user; ?>
                                 <tr>
                                     <td>
-
+                                        {{$acceptedDonor->name}} {{$acceptedDonor->surname}}
+                                    </td>
+                                    <td>
+                                        {{$acceptedDonor->gender}}
+                                    </td>
+                                    <td>
+                                        {{$acceptedDonor->phone}}
+                                    </td>
+                                    <td>
+                                        {{$acceptedDonor->town->city->name}} / {{$acceptedDonor->town->name}}
+                                    </td>
+                                    <td>
+                                        <a href="{{url('')}}" class="btn btn-success">Katıldı</a>
                                     </td>
                                 </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

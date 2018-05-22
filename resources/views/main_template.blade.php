@@ -18,7 +18,7 @@
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
-
+    @yield('head')
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
@@ -34,7 +34,7 @@
         <div class="logo">
             <a href="" class="simple-text">
                 Kan 
-        <img src="material/img/logo.png" width=30/> Dostum
+        <img src="{{asset("material/img/logo.png")}}" width=30/> Dostum
             </a>
         </div>
         <div class="sidebar-wrapper" data-color="red">
@@ -201,8 +201,6 @@
 <script src="{{asset('material/js/perfect-scrollbar.jquery.min.js')}}"></script>
 <!--  Notifications Plugin    -->
 <script src="{{asset('material/js/bootstrap-notify.js')}}"></script>
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!-- Material Dashboard javascript methods -->
 <script src="{{asset('material/js/material-dashboard.js?v=1.2.0')}}"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->

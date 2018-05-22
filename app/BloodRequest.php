@@ -7,10 +7,11 @@ class BloodRequest extends Model{
     public $timestamps = false;
     protected $primaryKey = 'blood_request_id';
 
-    public function bloodRequestReplies()
+    public function bloodRequestTowns()
     {
-        return $this->hasMany('App\BloodRequestReply', 'blood_request_id', 'blood_request_id');
+        return $this->hasMany('App\BloodRequestTown', 'blood_request_id', 'blood_request_id');
     }
+
     public function employeeMadeRequest()
     {
         return $this->hasOne('App\Employee', 'blood_request_id', 'blood_request_id');

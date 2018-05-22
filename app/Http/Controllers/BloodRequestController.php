@@ -8,8 +8,13 @@
 
 namespace App\Http\Controllers;
 
+use App\AcceptedRequest;
 use App\BloodRequest;
+use App\BloodRequestTown;
+use App\Town;
+use App\City;
 use App\Institution;
+use League\Flysystem\Exception;
 use Illuminate\Http\Request;
 
 class BloodRequestController extends Controller
@@ -20,14 +25,26 @@ class BloodRequestController extends Controller
     }
 
     public function kantalebi(){
-        $isActive = FunctionController::getIsActiveOfMenu("kantalebi");
-        return view('kantalebi')->with('isActive',$isActive);
+            $cities=City::all();
+            $townOfInstitution=Town::find(session()->get('townIdOfInstitution'));
+            $cityOfInstitution=$townOfInstitution->city;
+            $isActive = FunctionController::getIsActiveOfMenu("kantalebi");
+            return view('kantalebi')->with('isActive',$isActive)->with('townOfInstitution',$townOfInstitution)
+                ->with('cityOfInstitution',$cityOfInstitution)->with('cities',$cities);
     }
 
     public function kantalebilistesi(){
         $bloodRequests = BloodRequest::all();
         $isActive = FunctionController::getIsActiveOfMenu("kantalebilistesi");
         return view('kantalebilistesi')->with('isActive',$isActive)->with('bloodRequests',$bloodRequests);
+    }
+
+    public function kantalebi_incele($id){
+        $bloodRequest = BloodRequest::find($id);
+        $acceptedRequests = AcceptedRequest::where('blood_request_id',$bloodRequest->blood_request_id)->get();
+        $isActive = FunctionController::getIsActiveOfMenu("kantalebilistesi");
+        return view('kantalebi_incele')->with('isActive',$isActive)->with('bloodRequest',$bloodRequest)
+            ->with('acceptedRequests',$acceptedRequests);
     }
 
     public function getBloodRequests($institution_id){
@@ -37,7 +54,6 @@ class BloodRequestController extends Controller
     public function addBloodRequest(Request $request)
     {
         $bloodRequest = new BloodRequest();
-        $bloodRequest->town_id = $request->town_id;
         $bloodRequest->blood_type = $request->blood_type;
         $bloodRequest->blood_group = $request->blood_group;
         $bloodRequest->date = $request->date;
@@ -47,12 +63,25 @@ class BloodRequestController extends Controller
         $bloodRequest->employee_id = $request->employee_id;
         $bloodRequest->user_id = $request->user_id;
         $bloodRequest->save();
+
+       foreach ($request->towns as $town){
+            $bloodRequestTown = new BloodRequestTown();
+            $bloodRequestTown->town_id = $town;
+            $bloodRequestTown->blood_request_id = $bloodRequest->blood_request_id;
+            $bloodRequestTown->save();
+        }
     }
 
     public function deleteBloodRequest(Request $request)
     {
         $bloodRequest = BloodRequest::find($request->blood_request_id);
         $bloodRequest->delete();
+    }
+    public function attendanceCompleted(Request $request)
+    {
+        $acceptedRequest = AcceptedRequest::find($request->accepted_request_id);
+        $acceptedRequest->status=1;
+        $acceptedRequest->save();
     }
     public function updateBloodRequest(Request $request){
         $bloodRequest = BloodRequest::find($request->blood_request_id);

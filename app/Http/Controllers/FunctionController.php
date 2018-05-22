@@ -47,4 +47,13 @@ class FunctionController extends Controller
     public function getToken(){
         return csrf_token();
     }
+    public function getSession(){
+        dd(session()->all());
+    }
+    public function flushSession(){echo "hoops";
+        session()->forget('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
+        session()->flush();
+        dd(session()->flush());
+        session_destroy();
+    }
 }

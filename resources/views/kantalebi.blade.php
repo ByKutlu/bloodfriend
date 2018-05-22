@@ -83,7 +83,7 @@
                 </div>
                 <div class="card-footer">
                     <button type="submit" id="requestButton" class="btn btn-info pull-right">Kan Talep Et</button>
-                    <button type="button" id="sendNotification" >aaa</button>
+                   <!-- <button type="button" id="sendNotification" >aaa</button>-->
                     <div class="clearfix"></div>
                 </div>
             </form>
@@ -190,7 +190,7 @@
                         alert("Kan Talebi Gerçekleştirilemedi!!!");
                     }
                 });
-                $('#sendNotification').click();
+                sendNotification();
             }
             else
             {
@@ -200,7 +200,7 @@
     );
 
     //SEND NOTIFICATION
-    $("#sendNotification").click(function(e) {
+    function sendNotification() {
         var selected_il = $('#secilen_ilceler').val();
         if(selected_il.length>0){
         var bloodGroup = $("#blood_group").val();
@@ -240,8 +240,8 @@
         }
         conditionString += ")";
 
-        alert(conditionString);
-        /*$.ajax({
+        //alert(conditionString);
+        $.ajax({
             type : 'POST',
             url : "https://fcm.googleapis.com/fcm/send",
             headers : {
@@ -258,18 +258,19 @@
 
             }),
             success : function(response) {
+                window.location.href = "{{url('kantalebilistesi')}}";
                 console.log(response);
             },
             error : function(xhr, status, error) {
                 console.log(xhr.error);
             }
-        });*/
+        });
     }
     else
         {
             alert("Bildirim gönderilmesi için az bir ilçe seçiniz");
         }
-    });
+    };
 
 </script>
 @endsection

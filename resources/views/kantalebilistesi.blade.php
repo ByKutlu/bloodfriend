@@ -90,14 +90,7 @@
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <div class=" col-md-12">
-                                            @if($bloodRequest->is_active==1)
-                                                <button type="button" class="btn btn-warning blood_request_make_inactive" name="{{$bloodRequest->blood_request_id}}">Talebi Kapat</button>
-                                            @endif
-                                            <button type="button" class="btn btn-info" data-dismiss="modal">Tamam</button>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -170,27 +163,6 @@
         var bloodType = $("#blood_type_"+bloodRequestId).val();
         $("#select_blood_group_"+bloodRequestId).val(bloodGroup);
         $("#select_blood_type_"+bloodRequestId).val(bloodType);
-    });
-
-    $(".blood_request_make_inactive").click(function(e) {
-        var blood_request_id = this.name;
-        $.ajax({
-            type: "POST",
-            url: "{{url('makeInactiveBloodRequest')}}",
-            data	:  {
-                "blood_request_id":blood_request_id,
-                "_token" : "{{ csrf_token() }}"
-            },
-            success: function(msg) {
-                console.log(reply);
-
-            },
-            async: false,
-            error: function() {
-                alert("Kan Talebi Kapatma İşlemi Başarısız!!!");
-            }
-        });
-        location.reload();
     });
 </script>
 @endsection

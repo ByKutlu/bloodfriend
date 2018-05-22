@@ -37,6 +37,7 @@ Route::post('/addBloodRequest','BloodRequestController@addBloodRequest');
 Route::post('/deleteBloodRequest','BloodRequestController@deleteBloodRequest');
 Route::post('/updateBloodRequest','BloodRequestController@updateBloodRequest');
 Route::post('/makeInactiveBloodRequest','BloodRequestController@makeInactiveBloodRequest');
+Route::post('/attendanceCompleted','BloodRequestController@attendanceCompleted');
 Route::get('/getBloodRequests/{institution_id}','InstituionController@getBloodRequests');
 
 //DONOR

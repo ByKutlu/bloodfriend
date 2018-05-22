@@ -98,31 +98,7 @@
                 (day<10 ? '0' : '') + day;
 
             var token = $("#_token").val();
-            $.ajax({
-                type: "POST",
-                url: "{{url('addBloodRequest')}}",
-                data	:  {
-                    "institution_id":institution_id,
-                    "blood_type": blood_type,
-                    "blood_group": blood_group,
-                    "town_id": town_id,
-                    "is_active": is_active,
-                    "employee_id": employee_id,
-                    "user_id":user_id,
-                    "unit_number":unit_number,
-                    "date":date,
-                    "_token":token
-                },
 
-                success: function(msg) {
-                    console.log(msg);
-
-                },
-                async: false,
-                error: function() {
-                    alert("Kan Talebi Gerçekleştirilemedi!!!");
-                }
-            });
             $('#sendNotification').click();
             }
         );
@@ -136,12 +112,30 @@
                         Authorization : 'key=AAAAJ3sUI6w:APA91bESa-UinRxItfbcH_dtM4qR8lcGCn26HI5xp4BWhuNQTh2h6j4y4wyU4QhNh2SmzEJzk1-hx6ynd9VSQgVHP6gEDyAZFGdffba44YAKwUllR7Agzywf9Vh-RH_b_WOyS9VtM4uE'
                     },
                     contentType : 'application/json',
+                   /* body: JSON.stringify({
+                        "message": {
+                            "condition": "'BRHPozitif' in topics",
+                            "notification": {
+                                "title": "Message Title",
+                                "body": "Message Body"
+                            }
+                        }
+                    }),*/
                     data : JSON.stringify({
-                        "to": "/topics/"+town_name,
+                       // "to": "/topics/"+town_name,
+                        "data":{
+                            "blood_request_id" : "59",
+                            "institutionAddress" : "Kozağaç Mahallesi, Seyfi Demirsoy Devlet Hastanesi, Özmen Caddesi, Buca/İzmir",
+                            "institutionName" : "Özel Tınaztepe Hastanesi",
+                            "bloodGroup" : "B RH(+)"
+                        },
+                        "condition": "'BRHPozitif' in topics && 'available' in topics && '85' in topics" ,
+                        "priority" : "high",
                         "notification" : {
-                            "body" : "This is a Firebase Cloud Messaging Topic Message!",
+                            "body" : "İlçenizde sizin kan verebileceğiniz bir adet kan talebi bulunmaktadır!",
                             "sound" : "default",
-                            "title" : "FCM Message"
+                            "title" : "Kan Dostum",
+                            "tag" : "Tınaztepe Mah."
                         }
 
                     }),

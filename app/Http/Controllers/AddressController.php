@@ -14,4 +14,9 @@ class AddressController extends Controller
     public function getTowns($city_id){
         return response()->json(Town::where("city_id",$city_id)->get());
     }
+
+    public function getSpecificCity($town_id){
+        $town = Town::find($town_id);
+        return response()->json($town->city);
+    }
 }

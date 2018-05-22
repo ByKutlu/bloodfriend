@@ -41,10 +41,13 @@ Route::get('/getBloodRequests/{institution_id}','InstituionController@getBloodRe
 //DONOR
 Route::post('/addDonor','DonorController@addDonor')->name('addDonor');
 Route::post('/loginDonor','DonorController@loginDonor')->name('loginDonor');
+Route::post('/getDonorInfo','DonorController@getDonorInfo')->name('getDonorInfo');
+Route::post('/updateDonor','DonorController@updateDonor')->name('updateDonor');
 
 //ADRESS
 Route::get('/getCities','AddressController@getCities');
 Route::get('/getTowns/{city_id}','AddressController@getTowns');
+Route::get('/getSpecificCity/{town_id}','AddressController@getSpecificCity');
 
 //AUTHENTICATION
 Auth::routes();
@@ -52,6 +55,22 @@ Route::get('/home', 'HomeController@index');
 
 //FORM QUESTION
 Route::get('/getQuestions','FormQuestionController@getQuestions');
+
+//FORM QUESTION REPLY
+Route::post('/addReplies','FormQuestionReplyController@addReplies')->name('addReplies');
+Route::post('/updateReplies','FormQuestionReplyController@updateReplies')->name('updateReplies');
+Route::post('/getFormRepliesOfUser','FormQuestionReplyController@getFormRepliesOfUser')->name('getFormRepliesOfUser');
+
+//REJECTED DESCRIPTION
+Route::get('/getRejectedDescriptions','RejectedDescriptionController@getRejectedDescriptions');
+
+//REJECTED REQUEST
+Route::post('/addRejectedRequest','RejectedRequestController@addRejectedRequest')->name('addRejectedRequest');
+Route::post('/getRejectedRequests','RejectedRequestController@getRejectedRequests')->name('getRejectedRequests');
+
+//ACCEPTED REQUEST
+Route::post('/addAcceptedRequest','AcceptedRequestController@addAcceptedRequest')->name('addAcceptedRequest');
+Route::post('/getAcceptedRequests','AcceptedRequestController@getAcceptedRequests')->name('getAcceptedRequests');
 
 //CHANGE USERTYPE
 Route::get('/change_usertype', 'FunctionController@changeUserType');

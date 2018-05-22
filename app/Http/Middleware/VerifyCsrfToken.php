@@ -13,7 +13,16 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
         "addDonor",
-        "loginDonor"
-        //
+        "loginDonor",
+        "addReplies",
+        "getFormRepliesOfUser",
+        "getDonorInfo",
+        "updateReplies",
+        "updateDonor",
+        "addRejectedRequest",
+        "addAcceptedRequest",
+        "forgotPassword",
+        "getAcceptedRequests",
+        "getRejectedRequests"
     ];
 }

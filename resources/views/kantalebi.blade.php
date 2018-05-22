@@ -190,9 +190,7 @@
                     }
                 });
                 sendNotification();
-            var token = $("#_token").val();
 
-            $('#sendNotification').click();
             }
             else
             {
@@ -242,25 +240,7 @@
         }
         conditionString += ")";
 
-        //alert(conditionString);
-        $.ajax({
-            type : 'POST',
-            url : "https://fcm.googleapis.com/fcm/send",
-            headers : {
-                Authorization : 'key=AAAAJ3sUI6w:APA91bESa-UinRxItfbcH_dtM4qR8lcGCn26HI5xp4BWhuNQTh2h6j4y4wyU4QhNh2SmzEJzk1-hx6ynd9VSQgVHP6gEDyAZFGdffba44YAKwUllR7Agzywf9Vh-RH_b_WOyS9VtM4uE'
-            },
-            contentType : 'application/json',
-            data : JSON.stringify({
-                "condition": conditionString,
-                "notification" : {
-                    "body" : "This is a Firebase Cloud Messaging Topic Message!",
-                    "sound" : "default",
-                    "title" : "FCM Message"
-                }
-        );
-        $("#sendNotification").click(function(e) {
-                //var town_id = $("#town_id").val();
-                var town_name = "news";
+
                 $.ajax({
                     type : 'POST',
                     url : "https://fcm.googleapis.com/fcm/send",
@@ -268,15 +248,7 @@
                         Authorization : 'key=AAAAJ3sUI6w:APA91bESa-UinRxItfbcH_dtM4qR8lcGCn26HI5xp4BWhuNQTh2h6j4y4wyU4QhNh2SmzEJzk1-hx6ynd9VSQgVHP6gEDyAZFGdffba44YAKwUllR7Agzywf9Vh-RH_b_WOyS9VtM4uE'
                     },
                     contentType : 'application/json',
-                   /* body: JSON.stringify({
-                        "message": {
-                            "condition": "'BRHPozitif' in topics",
-                            "notification": {
-                                "title": "Message Title",
-                                "body": "Message Body"
-                            }
-                        }
-                    }),*/
+
                     data : JSON.stringify({
                        // "to": "/topics/"+town_name,
                         "data":{
@@ -285,7 +257,7 @@
                             "institutionName" : "Özel Tınaztepe Hastanesi",
                             "bloodGroup" : "B RH(+)"
                         },
-                        "condition": "'BRHPozitif' in topics && 'available' in topics && '85' in topics" ,
+                        "condition": conditionString,
                         "priority" : "high",
                         "notification" : {
                             "body" : "İlçenizde sizin kan verebileceğiniz bir adet kan talebi bulunmaktadır!",

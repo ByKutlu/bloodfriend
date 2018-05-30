@@ -31,5 +31,22 @@ class BloodRequest extends Model{
     public function user(){
         return $this->belongsTo('App\User','user_id','user_id');
     }
+
+    public function acceptedRequest(){
+        return $this->hasMany('App\AcceptedRequest','blood_request_id','blood_request_id');
+    }
+
+
+    public function rejectedRequest(){
+        return $this->hasMany('App\RejectedRequest','blood_request_id','blood_request_id');
+    }
+
+    public function acceptedCount(){
+        return $this->acceptedRequest->count();
+    }
+
+    public function completedCount(){
+        return $this->acceptedRequest->where('status','C')->count();
+    }
 }
 ?>

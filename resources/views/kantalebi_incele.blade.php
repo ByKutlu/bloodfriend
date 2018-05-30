@@ -41,7 +41,8 @@
                         <div class="form-group">
                             <label>Talep Tarihi : </label>
                             <label>{{date('d M Y',strtotime($bloodRequest->date))}}</label>
-                        </div>
+                        </div>Deneme:
+                        {{$bloodRequest->acceptedCount()}}
                         <div class="form-group">
                             <label>Talep Gönderilen İlçeler : </label>
                             <ul>
@@ -85,7 +86,7 @@
                                         {{$acceptedDonor->town->city->name}} / {{$acceptedDonor->town->name}}
                                     </td>
                                     <td>
-                                        @if($acceptedRequest->status)
+                                        @if($acceptedRequest->status=='C')
                                             <a href="#" class="btn btn-success" disabled>Tamamlandı</a>
                                         @else
                                             <a href="#" class="btn btn-success" accepted_request_id="{{$acceptedRequest->accepted_request_id}}" id="attendanceCompleted">Katıldı</a>

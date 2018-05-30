@@ -83,7 +83,7 @@ class BloodRequestController extends Controller
     public function attendanceCompleted(Request $request)
     {
         $acceptedRequest = AcceptedRequest::find($request->accepted_request_id);
-        $acceptedRequest->status=1;
+        $acceptedRequest->status='C';
         $acceptedRequest->save();
     }
     public function updateBloodRequest(Request $request){

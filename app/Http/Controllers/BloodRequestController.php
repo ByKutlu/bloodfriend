@@ -25,12 +25,13 @@ class BloodRequestController extends Controller
     }
 
     public function kantalebi(){
-            $cities=City::all();
-            $townOfInstitution=Town::find(session()->get('townIdOfInstitution'));
-            $cityOfInstitution=$townOfInstitution->city;
-            $isActive = FunctionController::getIsActiveOfMenu("kantalebi");
-            return view('kantalebi')->with('isActive',$isActive)->with('townOfInstitution',$townOfInstitution)
-                ->with('cityOfInstitution',$cityOfInstitution)->with('cities',$cities);
+        $institution = Institution::find(session()->get('institution_id'));
+        $cities=City::all();
+        $townOfInstitution=Town::find(session()->get('townIdOfInstitution'));
+        $cityOfInstitution=$townOfInstitution->city;
+        $isActive = FunctionController::getIsActiveOfMenu("kantalebi");
+        return view('kantalebi')->with('isActive',$isActive)->with('townOfInstitution',$townOfInstitution)
+            ->with('cityOfInstitution',$cityOfInstitution)->with('cities',$cities)->with('institution',$institution);
     }
 
     public function kantalebilistesi(){
@@ -70,6 +71,8 @@ class BloodRequestController extends Controller
             $bloodRequestTown->blood_request_id = $bloodRequest->blood_request_id;
             $bloodRequestTown->save();
         }
+
+        echo $bloodRequest->blood_request_id;
     }
 
     public function deleteBloodRequest(Request $request)

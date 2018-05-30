@@ -181,7 +181,7 @@
                         "date": date
                     },
                     success: function (msg) {
-                        console.log(msg);
+                        sendNotification(msg);
                     },
                     async: false,
                     error: function (e) {
@@ -189,7 +189,7 @@
                         alert("Kan Talebi Gerçekleştirilemedi!!!");
                     }
                 });
-                sendNotification();
+
 
             }
             else
@@ -200,7 +200,7 @@
     );
 
     //SEND NOTIFICATION
-    function sendNotification() {
+    function sendNotification(blood_request_id) {
         var selected_il = $('#secilen_ilceler').val();
         if(selected_il.length>0){
         var bloodGroup = $("#blood_group").val();
@@ -241,31 +241,29 @@
         conditionString += ")";
 
 
-                $.ajax({
-                    type : 'POST',
-                    url : "https://fcm.googleapis.com/fcm/send",
-                    headers : {
-                        Authorization : 'key=AAAAJ3sUI6w:APA91bESa-UinRxItfbcH_dtM4qR8lcGCn26HI5xp4BWhuNQTh2h6j4y4wyU4QhNh2SmzEJzk1-hx6ynd9VSQgVHP6gEDyAZFGdffba44YAKwUllR7Agzywf9Vh-RH_b_WOyS9VtM4uE'
-                    },
-                    contentType : 'application/json',
+        $.ajax({
+            type : 'POST',
+            url : "https://fcm.googleapis.com/fcm/send",
+            headers : {
+                Authorization : 'key=AAAAJ3sUI6w:APA91bESa-UinRxItfbcH_dtM4qR8lcGCn26HI5xp4BWhuNQTh2h6j4y4wyU4QhNh2SmzEJzk1-hx6ynd9VSQgVHP6gEDyAZFGdffba44YAKwUllR7Agzywf9Vh-RH_b_WOyS9VtM4uE'
+            },
+            contentType : 'application/json',
 
-                    data : JSON.stringify({
-                       // "to": "/topics/"+town_name,
-                        "data":{
-                            "blood_request_id" : "59",
-                            "institutionAddress" : "Kozağaç Mahallesi, Seyfi Demirsoy Devlet Hastanesi, Özmen Caddesi, Buca/İzmir",
-                            "institutionName" : "Özel Tınaztepe Hastanesi",
-                            "bloodGroup" : "B RH(+)"
-                        },
-                        "condition": conditionString,
-                        "priority" : "high",
-                        "notification" : {
-                            "body" : "İlçenizde sizin kan verebileceğiniz bir adet kan talebi bulunmaktadır!",
-                            "sound" : "default",
-                            "title" : "Kan Dostum",
-                            "tag" : "Tınaztepe Mah."
-                        }
-
+            data : JSON.stringify({
+                "data":{
+                    "blood_request_id" : blood_request_id,
+                    "institutionAddress" : "{{$institution->address}}",
+                    "institutionName" : "{{$institution->name}}",
+                    "bloodGroup" : bloodGroup
+                },
+                "condition": conditionString,
+                "priority" : "high",
+                "notification" : {
+                    "body" : "İlçenizde sizin kan verebileceğiniz bir adet kan talebi bulunmaktadır!",
+                    "sound" : "default",
+                    "title" : "Kan Dostum",
+                    "tag" : "Tınaztepe Mah."
+                }
             }),
             success : function(response) {
                 window.location.href = "{{url('kantalebilistesi')}}";

@@ -7,7 +7,7 @@
                 <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
                     {{ csrf_field() }}
 					<span class="login100-form-title p-b-26">
-						    KAN <img src="material/img/logo.png" width=50/>        DOSTUM
+						    KAN <img src="{{asset('material/img/logo.png')}}" width=50/>        DOSTUM
 					</span>
 
 
@@ -34,6 +34,7 @@
                                         <strong>Email veya şifre bilgileri hatalı!!</strong>
                                     </div>
                     @endif
+
                     <br/>
                     <div class="container-login100-form-btn">
                         <div class="wrap-login100-form-btn">
@@ -45,12 +46,19 @@
                     </div>
 
 
-                    <div class="text-center p-t-115">
+                    <div class="text-center ">
                         <a class="txt2" href="{{ route('password.request') }}">
                             Şifremi Unuttum
                         </a>
+
                     </div>
                 </form>
+                <br>
+                <a class="txt2" href="{{ url('androidapp/app-release.apk') }}">
+                    <img src="{{asset('material/img/android.png')}}" width=50/>
+                    <span style="color: red">Android Uygulamamızı İndirindirin!</span>
+                </a>
+                <br>
             </div>
         </div>
     </div>

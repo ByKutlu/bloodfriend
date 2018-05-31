@@ -43,7 +43,7 @@
                                                 <input type="text" name="name" class="form-control" id="name">
                                             </div>
                                             <div class="form-group">
-                                                <label class="form-control-label">Description</label>
+                                                <label class="form-control-label">Adres</label>
                                                 <input type="text"name="description" class="form-control" id="description">
                                             </div>
                                             <div class="form-group">
@@ -93,7 +93,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Adı</th>
-                    <th>Soyadı</th>
+                    <th>Adres</th>
                     <th>Mail</th>
                     <th>Telefon</th>
                     <th>Faks</th>
@@ -105,7 +105,7 @@
                     <tr>
                         <td>{{$institution->institution_id}}</td>
                         <td>{{$institution->name}}</td>
-                        <td>{{$institution->description}}</td>
+                        <td>{{$institution->address}}</td>
                         <td>{{$institution->mail}}</td>
                         <td>{{$institution->phone}}</td>
                         <td>{{$institution->fax}}</td>
@@ -137,8 +137,8 @@
                                                 <label>{{$institution->name}}</label>
                                             </div>
                                             <div class="form-group">
-                                                <label class="form-control-label">Description : </label>
-                                                <label>{{$institution->description}}</label>
+                                                <label class="form-control-label">Adres : </label>
+                                                <label>{{$institution->address}}</label>
                                             </div>
                                             <div class="form-group">
                                                 <label>Mail : </label>
@@ -199,8 +199,8 @@
                                                     <input type="text" name="name" class="form-control" id="update_name{{$institution->institution_id}}" value="{{$institution->name}}">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="form-control-label">Description</label>
-                                                    <input type="text" name="description" class="form-control" id="update_description{{$institution->institution_id}}" value="{{$institution->description}}">
+                                                    <label class="form-control-label">Adres</label>
+                                                    <input type="text" name="description" class="form-control" id="update_description{{$institution->institution_id}}" value="{{$institution->address}}">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="form-control-label">Phone</label>
@@ -354,11 +354,11 @@
                 },
 
                 success: function(msg) {
-                    console.log(reply);
 
                 },
                 async: false,
-                error: function() {
+                error: function(e) {
+                    console.log(e);
                     alert("Ekleme tamamlanamadı!!!");
                 }
             });

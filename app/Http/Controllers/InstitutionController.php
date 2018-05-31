@@ -29,13 +29,15 @@ class InstitutionController extends Controller
     }
 
     public function addInstitution(Request $request){
+        //print_r($request->town_id);
         $institution = new Institution();
         $institution->name = $request->name;
-        $institution->description = $request->description;
+        $institution->address = $request->description;
         $institution->phone = $request->phone;
         $institution->mail = $request->mail;
         $institution->fax = $request->fax;
         $institution->town_id = $request->town_id;
+        $institution->description = "Devlet Hastanesi";
         $institution->save();
     }
     public function updateInstitution(Request $request){

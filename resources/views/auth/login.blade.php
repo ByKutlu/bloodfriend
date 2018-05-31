@@ -56,7 +56,7 @@
                 <br>
                 <a class="txt2" href="{{ url('androidapp/app-release.apk') }}">
                     <img src="{{asset('material/img/android.png')}}" width=50/>
-                    <span style="color: red">Android Uygulamamızı İndirindirin!</span>
+                    <span style="color: red">Android Uygulamamızı İndirin!</span>
                 </a>
                 <br>
             </div>
